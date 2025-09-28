@@ -253,42 +253,34 @@ class _NavigationBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final designVariables = DesignVariables.of(context);
 
-    final iconColor = WidgetStateColor.fromMap({
-      WidgetState.pressed:  designVariables.iconSelected,
-      ~WidgetState.pressed: selected ? designVariables.iconSelected
-                                     : designVariables.icon,
-    });
-
-    final textColor = selected ? designVariables.iconSelected : designVariables.icon;
+    final color = selected ? designVariables.iconSelected : designVariables.icon;
 
     return AnimatedScaleOnTap(
       scaleEnd: 0.875,
       duration: const Duration(milliseconds: 100),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 34,
-            child: IconButton(
-              icon: Icon(icon, size: 24),
-              onPressed: onPressed,
-              style: IconButton.styleFrom(
-                // TODO(#417): Disable splash effects for all buttons globally.
-                splashFactory: NoSplash.splashFactory,
-                highlightColor: designVariables.navigationButtonBg,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
-              ).copyWith(foregroundColor: iconColor)),
-          ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: textColor,
-              height: 1.0,),
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis)
-        ]));
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onPressed,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 34,
+              child: Center(
+                child: Icon(icon, size: 24, color: color,)),
+            ),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: color,
+                  height: 1.0,),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis),
+            )
+          ]),
+      ));
   }
 }
 
