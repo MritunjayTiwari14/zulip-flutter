@@ -86,6 +86,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final zulipLocalizations = ZulipLocalizations.of(context);
+
     const pageBodies = [
       (_HomePageTab.inbox,          InboxPageBody()),
       (_HomePageTab.channels,       SubscriptionListPageBody()),
@@ -93,28 +95,34 @@ class _HomePageState extends State<HomePage> {
       (_HomePageTab.directMessages, RecentDmConversationsPageBody()),
     ];
 
-    _NavigationBarButton button(_HomePageTab tab, IconData icon) {
+    _NavigationBarButton button(_HomePageTab tab, IconData icon, String label) {
       return _NavigationBarButton(icon: icon,
         selected: _tab.value == tab,
         onPressed: () {
           _tab.value = tab;
-        });
+        },
+        label: label);
     }
 
     // TODO(a11y): add tooltips for these buttons
     final navigationBarButtons = [
-      button(_HomePageTab.inbox,          ZulipIcons.inbox),
+      button(_HomePageTab.inbox,          ZulipIcons.inbox,
+        zulipLocalizations.inboxPageTitle),
       _NavigationBarButton(         icon: ZulipIcons.message_feed,
         selected: false,
         onPressed: () => Navigator.push(context,
           MessageListPage.buildRoute(context: context,
-            narrow: const CombinedFeedNarrow()))),
-      button(_HomePageTab.channels,       ZulipIcons.hash_italic),
+            narrow: const CombinedFeedNarrow())), 
+        label: zulipLocalizations.navBarFeedLabel),
+      button(_HomePageTab.channels,       ZulipIcons.hash_italic,
+        zulipLocalizations.channelsPageTitle),
       // TODO(#1094): Users
-      button(_HomePageTab.directMessages, ZulipIcons.two_person),
+      button(_HomePageTab.directMessages, ZulipIcons.two_person,
+        zulipLocalizations.navBarDmLabel),
       _NavigationBarButton(         icon: ZulipIcons.menu,
         selected: false,
-        onPressed: () => _showMainMenu(context, tabNotifier: _tab)),
+        onPressed: () => _showMainMenu(context, tabNotifier: _tab),
+        label: zulipLocalizations.navBarMenuLabel),
     ];
 
     final designVariables = DesignVariables.of(context);
@@ -124,17 +132,19 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           for (final (tab, body) in pageBodies)
-            // TODO(#535): Decide if we find it helpful to use something like
-            //   [SemanticsProperties.namesRoute] to structure this UI better
-            //   for screen-reader software.
-            Offstage(offstage: tab != _tab.value, child: body),
+            Offstage(
+              offstage: tab != _tab.value,
+              child: Semantics(
+                namesRoute: true,
+                child: body))
         ]),
       bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(
           border: Border(top: BorderSide(color: designVariables.borderBar)),
           color: designVariables.bgBotBar),
         child: SafeArea(
-          child: SizedBox(height: 48,
+          child: SizedBox(
+            height: 62,
             child: Center(
               child: ConstrainedBox(
                 // TODO(design): determine a suitable max width for bottom nav bar
@@ -231,11 +241,13 @@ class _NavigationBarButton extends StatelessWidget {
     required this.icon,
     required this.selected,
     required this.onPressed,
+    required this.label,
   });
 
   final IconData icon;
   final bool selected;
   final void Function() onPressed;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -247,19 +259,36 @@ class _NavigationBarButton extends StatelessWidget {
                                      : designVariables.icon,
     });
 
+    final textColor = selected ? designVariables.iconSelected : designVariables.icon;
+
     return AnimatedScaleOnTap(
       scaleEnd: 0.875,
       duration: const Duration(milliseconds: 100),
-      child: IconButton(
-        icon: Icon(icon, size: 24),
-        onPressed: onPressed,
-        style: IconButton.styleFrom(
-          // TODO(#417): Disable splash effects for all buttons globally.
-          splashFactory: NoSplash.splashFactory,
-          highlightColor: designVariables.navigationButtonBg,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4))),
-        ).copyWith(foregroundColor: iconColor)));
+      child: Column(
+        children: [
+          SizedBox(
+            height: 34,
+            child: IconButton(
+              icon: Icon(icon, size: 24),
+              onPressed: onPressed,
+              style: IconButton.styleFrom(
+                // TODO(#417): Disable splash effects for all buttons globally.
+                splashFactory: NoSplash.splashFactory,
+                highlightColor: designVariables.navigationButtonBg,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4))),
+              ).copyWith(foregroundColor: iconColor)),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color: textColor,
+              height: 1.0,),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis)
+        ]));
   }
 }
 
