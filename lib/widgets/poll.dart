@@ -97,18 +97,19 @@ class _PollWidgetState extends State<PollWidget> {
               padding: const EdgeInsetsDirectional.only(
                 end: 5, top: verticalPadding, bottom: verticalPadding),
               child: Material(
-                color: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3),
+                  side: BorderSide(color: theme.colorPollVoteCountBorder)),
+                color: theme.colorPollVoteCountBackground,
+                type: MaterialType.transparency,
+                clipBehavior: Clip.antiAlias,
                 child: InkWell(
                   onTap: () => _toggleVote(option),
-                  child: Ink(
+                  child: Padding(
                     // Inner padding preserves whitespace even when the text's
                     // width approaches the button's min-width (e.g. because
                     // there are more than three digits).
                     padding: const EdgeInsets.symmetric(horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: theme.colorPollVoteCountBackground,
-                      border: Border.all(color: theme.colorPollVoteCountBorder),
-                      borderRadius: BorderRadius.circular(3)),
                     child: Center(
                       child: Text(option.voters.length.toString(),
                         style: textStyleBold.copyWith(
