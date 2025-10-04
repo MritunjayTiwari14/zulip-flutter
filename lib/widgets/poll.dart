@@ -101,7 +101,6 @@ class _PollWidgetState extends State<PollWidget> {
                   borderRadius: BorderRadius.circular(3),
                   side: BorderSide(color: theme.colorPollVoteCountBorder)),
                 color: theme.colorPollVoteCountBackground,
-                type: MaterialType.transparency,
                 clipBehavior: Clip.antiAlias,
                 child: InkWell(
                   onTap: () => _toggleVote(option),
