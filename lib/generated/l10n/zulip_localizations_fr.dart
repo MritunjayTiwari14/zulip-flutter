@@ -75,8 +75,8 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get allChannelsPageTitle => 'All channels';
 
   @override
-  String get allChannelsEmptyPlaceholder =>
-      'There are no channels you can view in this organization.';
+  String get allChannelsEmptyPlaceholderHeader =>
+      'Il n\'y a pas de canal que vous pouvez visualiser dans cette organisation.';
 
   @override
   String get profileButtonSendDirectMessage => 'Envoyer un message direct';
@@ -100,7 +100,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       'Pour charger des fichiers, merci d\'accorder des autorisations supplémentaires à Zulip, dans les préférences.';
 
   @override
-  String get actionSheetOptionSubscribe => 'Subscribe';
+  String get actionSheetOptionSubscribe => 'S\'abonner';
 
   @override
   String get subscribeFailedTitle => 'Failed to subscribe';
@@ -162,14 +162,15 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       'Impossible de marquer le sujet comme non résolu';
 
   @override
-  String get actionSheetOptionSeeWhoReacted => 'See who reacted';
+  String get actionSheetOptionSeeWhoReacted => 'Voir qui a réagi';
 
   @override
-  String get seeWhoReactedSheetNoReactions => 'This message has no reactions.';
+  String get seeWhoReactedSheetNoReactions =>
+      'Aucune réaction associée à ce message.';
 
   @override
   String seeWhoReactedSheetHeaderLabel(int num) {
-    return 'Emoji reactions ($num total)';
+    return 'Réactions emoji ($num total)';
   }
 
   @override
@@ -180,38 +181,38 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       other: '$num votes',
       one: '1 vote',
     );
-    return '$emojiName: $_temp0';
+    return '$emojiName : $_temp0';
   }
 
   @override
   String seeWhoReactedSheetUserListLabel(String emojiName, int num) {
-    return 'Votes for $emojiName ($num)';
+    return 'Votes pour $emojiName ($num)';
   }
 
   @override
-  String get actionSheetOptionViewReadReceipts => 'View read receipts';
+  String get actionSheetOptionViewReadReceipts => 'Voir accusés de réception';
 
   @override
-  String get actionSheetReadReceipts => 'Read receipts';
+  String get actionSheetReadReceipts => 'Accusés de réception';
 
   @override
   String actionSheetReadReceiptsReadCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'This message has been <z-link>read</z-link> by $count people:',
-      one: 'This message has been <z-link>read</z-link> by $count person:',
+      other: 'Ce message a été <z-link>lu</z-link> par $count personnes :',
+      one: 'Ce message a été <z-link>lu</z-link> par $count personne:',
     );
     return '$_temp0';
   }
 
   @override
   String get actionSheetReadReceiptsZeroReadCount =>
-      'No one has read this message yet.';
+      'Personne n\'a encore lu ce message.';
 
   @override
   String get actionSheetReadReceiptsErrorReadCount =>
-      'Failed to load read receipts.';
+      'Échec du chargement des accusés de réception.';
 
   @override
   String get actionSheetOptionCopyMessageText => 'Copier le contenu du message';
@@ -243,20 +244,21 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get actionSheetOptionEditMessage => 'Modifier le message';
 
   @override
-  String get actionSheetOptionDeleteMessage => 'Delete message';
+  String get actionSheetOptionDeleteMessage => 'Supprimer message';
 
   @override
-  String get deleteMessageConfirmationDialogTitle => 'Delete message?';
+  String get deleteMessageConfirmationDialogTitle => 'Supprimer message ?';
 
   @override
   String get deleteMessageConfirmationDialogMessage =>
-      'Deleting a message permanently removes it for everyone.';
+      'Supprimer un message de façon permanente le supprime pour tout le monde.';
 
   @override
-  String get deleteMessageConfirmationDialogConfirmButton => 'Delete';
+  String get deleteMessageConfirmationDialogConfirmButton => 'Supprimer';
 
   @override
-  String get errorDeleteMessageFailedTitle => 'Failed to delete message';
+  String get errorDeleteMessageFailedTitle =>
+      'Échec de la suppression du message';
 
   @override
   String get actionSheetOptionMarkTopicAsRead => 'Marquer le sujet comme lu';
@@ -451,7 +453,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get composeBoxBannerButtonRefresh => 'Refresh';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'Subscribe';
+  String get composeBoxBannerButtonSubscribe => 'S\'abonner';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Editer le message';
@@ -503,7 +505,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get composeBoxGenericContentHint => 'Type a message';
 
   @override
-  String get newDmSheetComposeButtonLabel => 'Compose';
+  String get newDmSheetComposeButtonLabel => 'Rédiger';
 
   @override
   String get newDmSheetScreenTitle => 'New DM';
@@ -540,13 +542,13 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get preparingEditMessageContentInput => 'Preparing…';
 
   @override
-  String get composeBoxSendTooltip => 'Send';
+  String get composeBoxSendTooltip => 'Envoyer';
 
   @override
   String get unknownChannelName => '(unknown channel)';
 
   @override
-  String get composeBoxTopicHintText => 'Topic';
+  String get composeBoxTopicHintText => 'Sujet';
 
   @override
   String composeBoxEnterTopicOrSkipHintText(String defaultTopicName) {
@@ -564,7 +566,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   }
 
   @override
-  String get unknownUserName => '(unknown user)';
+  String get unknownUserName => '(utilisateur inconnu)';
 
   @override
   String get dmsWithYourselfPageTitle => 'DMs with yourself';
@@ -675,8 +677,15 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Please enter your username.';
 
   @override
-  String get topicValidationErrorTooLong =>
-      'Topic length shouldn\'t be greater than 60 characters.';
+  String topicValidationErrorTooLong(int maxLength) {
+    String _temp0 = intl.Intl.pluralLogic(
+      maxLength,
+      locale: localeName,
+      other: '$maxLength characters',
+      one: '1 character',
+    );
+    return 'Topic length shouldn\'t be greater than $_temp0.';
+  }
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>
@@ -858,120 +867,126 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get userRoleModerator => 'Moderator';
 
   @override
-  String get userRoleMember => 'Member';
+  String get userRoleMember => 'Membre';
 
   @override
-  String get userRoleGuest => 'Guest';
+  String get userRoleGuest => 'Invité.e';
 
   @override
-  String get userRoleUnknown => 'Unknown';
+  String get userRoleUnknown => 'Inconnu';
 
   @override
-  String get statusButtonLabelStatusSet => 'Status';
+  String get statusButtonLabelStatusSet => 'Statut';
 
   @override
-  String get statusButtonLabelStatusUnset => 'Set status';
+  String get statusButtonLabelStatusUnset => 'Définir mon statut';
 
   @override
-  String get noStatusText => 'No status text';
+  String get noStatusText => 'Statut sans texte';
 
   @override
-  String get setStatusPageTitle => 'Set status';
+  String get setStatusPageTitle => 'Définir statut';
 
   @override
-  String get statusClearButtonLabel => 'Clear';
+  String get statusClearButtonLabel => 'Effacer';
 
   @override
-  String get statusSaveButtonLabel => 'Save';
+  String get statusSaveButtonLabel => 'Sauvegarder';
 
   @override
-  String get statusTextHint => 'Your status';
+  String get statusTextHint => 'Votre statut';
 
   @override
-  String get userStatusBusy => 'Busy';
+  String get userStatusBusy => 'Occupé';
 
   @override
-  String get userStatusInAMeeting => 'In a meeting';
+  String get userStatusInAMeeting => 'En réunion';
 
   @override
-  String get userStatusCommuting => 'Commuting';
+  String get userStatusCommuting => 'En déplacement';
 
   @override
-  String get userStatusOutSick => 'Out sick';
+  String get userStatusOutSick => 'Malade';
 
   @override
-  String get userStatusVacationing => 'Vacationing';
+  String get userStatusVacationing => 'En vacances';
 
   @override
-  String get userStatusWorkingRemotely => 'Working remotely';
+  String get userStatusWorkingRemotely => 'En télétravail';
 
   @override
-  String get userStatusAtTheOffice => 'At the office';
+  String get userStatusAtTheOffice => 'Au bureau';
 
   @override
   String get updateStatusErrorTitle =>
-      'Error updating user status. Please try again.';
+      'Erreur lors de la mise à jour du statut de l\'utilisateur. Merci de réessayer.';
 
   @override
-  String get searchMessagesPageTitle => 'Search';
+  String get searchMessagesPageTitle => 'Recherche';
 
   @override
-  String get searchMessagesHintText => 'Search';
+  String get searchMessagesHintText => 'Recherche';
 
   @override
-  String get searchMessagesClearButtonTooltip => 'Clear';
+  String get searchMessagesClearButtonTooltip => 'Effacer';
 
   @override
-  String get inboxPageTitle => 'Inbox';
+  String get inboxPageTitle => 'Boîte de réception';
 
   @override
-  String get inboxEmptyPlaceholder =>
-      'There are no unread messages in your inbox. Use the buttons below to view the combined feed or list of channels.';
+  String get inboxEmptyPlaceholderHeader =>
+      'There are no unread messages in your inbox.';
 
   @override
-  String get recentDmConversationsPageTitle => 'Direct messages';
+  String get inboxEmptyPlaceholderMessage =>
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
-  String get recentDmConversationsSectionHeader => 'Direct messages';
+  String get recentDmConversationsPageTitle => 'Messages directs';
 
   @override
-  String get recentDmConversationsEmptyPlaceholder =>
-      'You have no direct messages yet! Why not start the conversation?';
+  String get recentDmConversationsSectionHeader => 'Messages directs';
 
   @override
-  String get combinedFeedPageTitle => 'Combined feed';
+  String get recentDmConversationsEmptyPlaceholderHeader =>
+      'You have no direct messages yet!';
+
+  @override
+  String get recentDmConversationsEmptyPlaceholderMessage =>
+      'Why not start a conversation?';
+
+  @override
+  String get combinedFeedPageTitle => 'Fil groupé';
 
   @override
   String get mentionsPageTitle => 'Mentions';
 
   @override
-  String get starredMessagesPageTitle => 'Starred messages';
+  String get starredMessagesPageTitle => 'Messages favoris';
 
   @override
-  String get channelsPageTitle => 'Channels';
+  String get channelsPageTitle => 'Chaînes';
 
   @override
-  String get channelsEmptyPlaceholder =>
+  String get channelsEmptyPlaceholderHeader =>
       'You’re not subscribed to any channels yet.';
 
   @override
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  ) {
-    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override
-  String get sharePageTitle => 'Share';
+  String get sharePageTitle => 'Partager';
 
   @override
-  String get mainMenuMyProfile => 'My profile';
+  String get mainMenuMyProfile => 'Mon profil';
 
   @override
-  String get topicsButtonTooltip => 'Topics';
+  String get topicsButtonTooltip => 'Sujets';
 
   @override
-  String get channelFeedButtonTooltip => 'Channel feed';
+  String get channelFeedButtonTooltip => 'Fil de la chaîne';
 
   @override
   String notifGroupDmConversationLabel(String senderFullName, int numOthers) {
@@ -981,27 +996,27 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       other: '$numOthers others',
       one: '1 other',
     );
-    return '$senderFullName to you and $_temp0';
+    return '$senderFullName à vous et $_temp0';
   }
 
   @override
-  String get pinnedSubscriptionsLabel => 'Pinned';
+  String get pinnedSubscriptionsLabel => 'Épinglé';
 
   @override
-  String get unpinnedSubscriptionsLabel => 'Unpinned';
+  String get unpinnedSubscriptionsLabel => 'Désépingler';
 
   @override
-  String get notifSelfUser => 'You';
+  String get notifSelfUser => 'Vous';
 
   @override
-  String get reactedEmojiSelfUser => 'You';
+  String get reactedEmojiSelfUser => 'Vous';
 
   @override
-  String get reactionChipsLabel => 'Reactions';
+  String get reactionChipsLabel => 'Réactions';
 
   @override
   String reactionChipLabel(String emojiName, String votes) {
-    return '$emojiName: $votes';
+    return '$emojiName : $votes';
   }
 
   @override
@@ -1017,16 +1032,16 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
 
   @override
   String onePersonTyping(String typist) {
-    return '$typist is typing…';
+    return '$typist est en train d\'écrire…';
   }
 
   @override
   String twoPeopleTyping(String typist, String otherTypist) {
-    return '$typist and $otherTypist are typing…';
+    return '$typist et $otherTypist sont en train d\'écrire…';
   }
 
   @override
-  String get manyPeopleTyping => 'Several people are typing…';
+  String get manyPeopleTyping => 'Plusieurs personnes sont en train d\'écrire…';
 
   @override
   String get wildcardMentionAll => 'all';

@@ -67,14 +67,14 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get chooseAccountButtonAddAnAccount => 'Dodaj račun';
 
   @override
-  String get navButtonAllChannels => 'All channels';
+  String get navButtonAllChannels => 'Vsi kanali';
 
   @override
-  String get allChannelsPageTitle => 'All channels';
+  String get allChannelsPageTitle => 'Vsi kanali';
 
   @override
-  String get allChannelsEmptyPlaceholder =>
-      'There are no channels you can view in this organization.';
+  String get allChannelsEmptyPlaceholderHeader =>
+      'V tej organizaciji ni kanalov, do katerih imate dostop.';
 
   @override
   String get profileButtonSendDirectMessage => 'Pošlji neposredno sporočilo';
@@ -125,7 +125,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get unsubscribeConfirmationDialogMessageCannotResubscribe =>
-      'Once you leave this channel, you will not be able to rejoin.';
+      'Ko zapustite kanal, se ne boste več mogli pridružiti nazaj.';
 
   @override
   String get unsubscribeConfirmationDialogConfirmButton => 'Prekliči naročnino';
@@ -246,20 +246,20 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get actionSheetOptionEditMessage => 'Uredi sporočilo';
 
   @override
-  String get actionSheetOptionDeleteMessage => 'Delete message';
+  String get actionSheetOptionDeleteMessage => 'Izbriši sporočilo';
 
   @override
-  String get deleteMessageConfirmationDialogTitle => 'Delete message?';
+  String get deleteMessageConfirmationDialogTitle => 'Izbrišem sporočilo?';
 
   @override
   String get deleteMessageConfirmationDialogMessage =>
-      'Deleting a message permanently removes it for everyone.';
+      'Brisanje sporočila ga trajno odstrani za vse.';
 
   @override
-  String get deleteMessageConfirmationDialogConfirmButton => 'Delete';
+  String get deleteMessageConfirmationDialogConfirmButton => 'Izbriši';
 
   @override
-  String get errorDeleteMessageFailedTitle => 'Failed to delete message';
+  String get errorDeleteMessageFailedTitle => 'Sporočila se ne da izbrisati';
 
   @override
   String get actionSheetOptionMarkTopicAsRead => 'Označi temo kot prebrano';
@@ -288,7 +288,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get errorCouldNotAccessUploadedFileTitle =>
-      'Could not access uploaded file';
+      'Dostop do naložene datoteke ni mogoč';
 
   @override
   String get errorCopyingFailed => 'Kopiranje ni uspelo';
@@ -455,13 +455,13 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get composeBoxBannerLabelUnsubscribedWhenCannotSend =>
-      'New messages will not appear automatically.';
+      'Nova sporočila se ne bodo prikazala samodejno.';
 
   @override
-  String get composeBoxBannerButtonRefresh => 'Refresh';
+  String get composeBoxBannerButtonRefresh => 'Osveži';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'Subscribe';
+  String get composeBoxBannerButtonSubscribe => 'Naroči se';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Uredi sporočilo';
@@ -540,7 +540,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get composeBoxGroupDmContentHint => 'Skupinsko sporočilo';
 
   @override
-  String get composeBoxSelfDmContentHint => 'Zapišite opombo zase';
+  String get composeBoxSelfDmContentHint => 'Zapišite si opombo';
 
   @override
   String composeBoxChannelContentHint(String destination) {
@@ -686,8 +686,15 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Vnesite svoje uporabniško ime.';
 
   @override
-  String get topicValidationErrorTooLong =>
-      'Dolžina teme ne sme presegati 60 znakov.';
+  String topicValidationErrorTooLong(int maxLength) {
+    String _temp0 = intl.Intl.pluralLogic(
+      maxLength,
+      locale: localeName,
+      other: '$maxLength znakov',
+      one: '1 znaka',
+    );
+    return 'Dolžina teme ne sme presegati $_temp0.';
+  }
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>
@@ -947,8 +954,11 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get inboxPageTitle => 'Nabiralnik';
 
   @override
-  String get inboxEmptyPlaceholder =>
-      'V vašem nabiralniku ni neprebranih sporočil. Uporabite spodnje gumbe za ogled združenega prikaza ali seznama kanalov.';
+  String get inboxEmptyPlaceholderHeader => 'Ni neprebranih sporočil.';
+
+  @override
+  String get inboxEmptyPlaceholderMessage =>
+      'Uporabite spodnje gumbe za ogled združenega vira ali seznama kanalov.';
 
   @override
   String get recentDmConversationsPageTitle => 'Neposredna sporočila';
@@ -957,8 +967,12 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Neposredna sporočila';
 
   @override
-  String get recentDmConversationsEmptyPlaceholder =>
-      'Zaenkrat še nimate neposrednih sporočil! Zakaj ne bi začeli pogovora?';
+  String get recentDmConversationsEmptyPlaceholderHeader =>
+      'Nimate nobenih neposrednih sproročil!';
+
+  @override
+  String get recentDmConversationsEmptyPlaceholderMessage =>
+      'Zakaj ne bi začeli pogovora?';
 
   @override
   String get combinedFeedPageTitle => 'Združen prikaz';
@@ -973,13 +987,12 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get channelsPageTitle => 'Kanali';
 
   @override
-  String get channelsEmptyPlaceholder => 'Niste še naročeni na noben kanal.';
+  String get channelsEmptyPlaceholderHeader =>
+      'Niste še naročeni na noben kanal.';
 
   @override
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  ) {
-    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
+    return 'Poskusite odpreti <z-link>$allChannelsPageTitle</z-link> in se jim pridružiti.';
   }
 
   @override

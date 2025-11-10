@@ -137,14 +137,15 @@ class _SubscriptionListPageBodyState extends State<SubscriptionListPageBody> wit
     if (pinned.isEmpty && unpinned.isEmpty) {
       if (includeAllChannelsButton) {
         return PageBodyEmptyContentPlaceholder(
+          header: zulipLocalizations.channelsEmptyPlaceholderHeader,
           messageWithLinkMarkup:
-            zulipLocalizations.channelsEmptyPlaceholderWithAllChannelsLink(
+            zulipLocalizations.channelsEmptyPlaceholderMessage(
               zulipLocalizations.allChannelsPageTitle),
-          onTapLink: () => Navigator.push(context,
+          onTapMessageLink: () => Navigator.push(context,
             AllChannelsPage.buildRoute(context: context)));
       } else {
         return PageBodyEmptyContentPlaceholder(
-          message: zulipLocalizations.channelsEmptyPlaceholder);
+          header: zulipLocalizations.channelsEmptyPlaceholderHeader);
       }
     }
 
@@ -337,8 +338,7 @@ class SubscriptionItem extends StatelessWidget {
               opacity: opacity,
               child: UnreadCountBadge(
                 count: unreadCount,
-                channelIdForBackground: subscription.streamId,
-                bold: true)),
+                channelIdForBackground: subscription.streamId)),
           ] else if (showMutedUnreadBadge) ...[
             const SizedBox(width: 12),
             // TODO(#747) show @-mention indicator when it applies

@@ -7,8 +7,12 @@ import 'package:intl/intl.dart' as intl;
 
 import 'zulip_localizations_ar.dart';
 import 'zulip_localizations_de.dart';
+import 'zulip_localizations_el.dart';
 import 'zulip_localizations_en.dart';
+import 'zulip_localizations_es.dart';
 import 'zulip_localizations_fr.dart';
+import 'zulip_localizations_he.dart';
+import 'zulip_localizations_hu.dart';
 import 'zulip_localizations_it.dart';
 import 'zulip_localizations_ja.dart';
 import 'zulip_localizations_nb.dart';
@@ -108,8 +112,12 @@ abstract class ZulipLocalizations {
     Locale('en'),
     Locale('ar'),
     Locale('de'),
+    Locale('el'),
     Locale('en', 'GB'),
+    Locale('es'),
     Locale('fr'),
+    Locale('he'),
+    Locale('hu'),
     Locale('it'),
     Locale('ja'),
     Locale('nb'),
@@ -255,7 +263,7 @@ abstract class ZulipLocalizations {
   ///
   /// In en, this message translates to:
   /// **'There are no channels you can view in this organization.'**
-  String get allChannelsEmptyPlaceholder;
+  String get allChannelsEmptyPlaceholderHeader;
 
   /// Label for button in profile screen to navigate to DMs with the shown user.
   ///
@@ -1234,8 +1242,8 @@ abstract class ZulipLocalizations {
   /// Topic validation error when topic is too long.
   ///
   /// In en, this message translates to:
-  /// **'Topic length shouldn\'t be greater than 60 characters.'**
-  String get topicValidationErrorTooLong;
+  /// **'Topic length shouldn\'t be greater than {maxLength, plural, =1{1 character} other{{maxLength} characters}}.'**
+  String topicValidationErrorTooLong(int maxLength);
 
   /// Topic validation error when topic is required but was empty.
   ///
@@ -1612,8 +1620,14 @@ abstract class ZulipLocalizations {
   /// Centered text on the 'Inbox' page saying that there is no content to show.
   ///
   /// In en, this message translates to:
-  /// **'There are no unread messages in your inbox. Use the buttons below to view the combined feed or list of channels.'**
-  String get inboxEmptyPlaceholder;
+  /// **'There are no unread messages in your inbox.'**
+  String get inboxEmptyPlaceholderHeader;
+
+  /// Additional centered text on the 'Inbox' page saying that there is no content to show.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the buttons below to view the combined feed or list of channels.'**
+  String get inboxEmptyPlaceholderMessage;
 
   /// Title for the page with a list of DM conversations.
   ///
@@ -1630,8 +1644,14 @@ abstract class ZulipLocalizations {
   /// Centered text on the 'Direct messages' page saying that there is no content to show.
   ///
   /// In en, this message translates to:
-  /// **'You have no direct messages yet! Why not start the conversation?'**
-  String get recentDmConversationsEmptyPlaceholder;
+  /// **'You have no direct messages yet!'**
+  String get recentDmConversationsEmptyPlaceholderHeader;
+
+  /// Additional centered text on the 'Direct messages' page saying that there is no content to show.
+  ///
+  /// In en, this message translates to:
+  /// **'Why not start a conversation?'**
+  String get recentDmConversationsEmptyPlaceholderMessage;
 
   /// Page title for the 'Combined feed' message view.
   ///
@@ -1661,15 +1681,13 @@ abstract class ZulipLocalizations {
   ///
   /// In en, this message translates to:
   /// **'You’re not subscribed to any channels yet.'**
-  String get channelsEmptyPlaceholder;
+  String get channelsEmptyPlaceholderHeader;
 
   /// Centered text on the 'Channels' page saying that there is no content to show, with a link to 'All channels'.
   ///
   /// In en, this message translates to:
-  /// **'You’re not subscribed to any channels yet. Try going to <z-link>{allChannelsPageTitle}</z-link> and joining some of them.'**
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  );
+  /// **'Try going to <z-link>{allChannelsPageTitle}</z-link> and joining some of them.'**
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle);
 
   /// Title for the page about sharing content received from other apps.
   ///
@@ -2059,8 +2077,12 @@ class _ZulipLocalizationsDelegate
   bool isSupported(Locale locale) => <String>[
     'ar',
     'de',
+    'el',
     'en',
+    'es',
     'fr',
+    'he',
+    'hu',
     'it',
     'ja',
     'nb',
@@ -2103,10 +2125,18 @@ ZulipLocalizations lookupZulipLocalizations(Locale locale) {
       return ZulipLocalizationsAr();
     case 'de':
       return ZulipLocalizationsDe();
+    case 'el':
+      return ZulipLocalizationsEl();
     case 'en':
       return ZulipLocalizationsEn();
+    case 'es':
+      return ZulipLocalizationsEs();
     case 'fr':
       return ZulipLocalizationsFr();
+    case 'he':
+      return ZulipLocalizationsHe();
+    case 'hu':
+      return ZulipLocalizationsHu();
     case 'it':
       return ZulipLocalizationsIt();
     case 'ja':

@@ -73,7 +73,7 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get allChannelsPageTitle => 'All channels';
 
   @override
-  String get allChannelsEmptyPlaceholder =>
+  String get allChannelsEmptyPlaceholderHeader =>
       'There are no channels you can view in this organization.';
 
   @override
@@ -647,7 +647,9 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'ユーザー名を入力してください。';
 
   @override
-  String get topicValidationErrorTooLong => 'トピックは60文字以内で入力してください。';
+  String topicValidationErrorTooLong(int maxLength) {
+    return 'トピックは60文字以内で入力してください。';
+  }
 
   @override
   String get topicValidationErrorMandatoryButEmpty => 'この組織ではトピックの入力が必須です。';
@@ -891,8 +893,12 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get inboxPageTitle => '受信箱';
 
   @override
-  String get inboxEmptyPlaceholder =>
-      '未読メッセージはありません。下のボタンから、統合フィードまたはチャンネル一覧を表示できます。';
+  String get inboxEmptyPlaceholderHeader =>
+      'There are no unread messages in your inbox.';
+
+  @override
+  String get inboxEmptyPlaceholderMessage =>
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
   String get recentDmConversationsPageTitle => 'ダイレクトメッセージ';
@@ -901,8 +907,12 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'ダイレクトメッセージ';
 
   @override
-  String get recentDmConversationsEmptyPlaceholder =>
-      'まだダイレクトメッセージはありません！会話を始めてみませんか？';
+  String get recentDmConversationsEmptyPlaceholderHeader =>
+      'You have no direct messages yet!';
+
+  @override
+  String get recentDmConversationsEmptyPlaceholderMessage =>
+      'Why not start a conversation?';
 
   @override
   String get combinedFeedPageTitle => '統合フィード';
@@ -917,13 +927,12 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get channelsPageTitle => 'チャンネル';
 
   @override
-  String get channelsEmptyPlaceholder => 'まだ参加しているチャンネルはありません。';
+  String get channelsEmptyPlaceholderHeader =>
+      'You’re not subscribed to any channels yet.';
 
   @override
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  ) {
-    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override

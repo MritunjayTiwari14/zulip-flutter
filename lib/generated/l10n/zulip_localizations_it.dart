@@ -68,13 +68,14 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get chooseAccountButtonAddAnAccount => 'Aggiungi un account';
 
   @override
-  String get navButtonAllChannels => 'All channels';
+  String get navButtonAllChannels =>
+      'Titolo per un pulsante di navigazione che apre la pagina \"Tutti i canali\".';
 
   @override
-  String get allChannelsPageTitle => 'All channels';
+  String get allChannelsPageTitle => 'Titolo per la pagina \"Tutti i canali\".';
 
   @override
-  String get allChannelsEmptyPlaceholder =>
+  String get allChannelsEmptyPlaceholderHeader =>
       'There are no channels you can view in this organization.';
 
   @override
@@ -444,7 +445,8 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
       'New messages will not appear automatically.';
 
   @override
-  String get composeBoxBannerButtonRefresh => 'Refresh';
+  String get composeBoxBannerButtonRefresh =>
+      'Etichetta il testo per il pulsante \"Aggiorna\" nel banner della casella di composizione quando visualizzi un canale a cui non sei iscritto.';
 
   @override
   String get composeBoxBannerButtonSubscribe => 'Subscribe';
@@ -672,8 +674,9 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Inserire il proprio nomeutente.';
 
   @override
-  String get topicValidationErrorTooLong =>
-      'La lunghezza dell\'argomento non deve superare i 60 caratteri.';
+  String topicValidationErrorTooLong(int maxLength) {
+    return 'La lunghezza dell\'argomento non deve superare i 60 caratteri.';
+  }
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>
@@ -914,10 +917,12 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
       'Error updating user status. Please try again.';
 
   @override
-  String get searchMessagesPageTitle => 'Search';
+  String get searchMessagesPageTitle =>
+      'Titolo della pagina per la visualizzazione del messaggio \"Cerca\".';
 
   @override
-  String get searchMessagesHintText => 'Search';
+  String get searchMessagesHintText =>
+      'Testo di suggerimento per il campo di testo di ricerca del messaggio.';
 
   @override
   String get searchMessagesClearButtonTooltip => 'Clear';
@@ -926,8 +931,12 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get inboxPageTitle => 'Inbox';
 
   @override
-  String get inboxEmptyPlaceholder =>
-      'Non ci sono messaggi non letti nella posta in arrivo. Usare i pulsanti sotto per visualizzare il feed combinato o l\'elenco dei canali.';
+  String get inboxEmptyPlaceholderHeader =>
+      'There are no unread messages in your inbox.';
+
+  @override
+  String get inboxEmptyPlaceholderMessage =>
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
   String get recentDmConversationsPageTitle => 'Messaggi diretti';
@@ -936,8 +945,12 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Messaggi diretti';
 
   @override
-  String get recentDmConversationsEmptyPlaceholder =>
-      'Non ci sono ancora messaggi diretti! Perché non iniziare la conversazione?';
+  String get recentDmConversationsEmptyPlaceholderHeader =>
+      'You have no direct messages yet!';
+
+  @override
+  String get recentDmConversationsEmptyPlaceholderMessage =>
+      'Why not start a conversation?';
 
   @override
   String get combinedFeedPageTitle => 'Feed combinato';
@@ -952,14 +965,12 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get channelsPageTitle => 'Canali';
 
   @override
-  String get channelsEmptyPlaceholder =>
-      'Non sei ancora iscritto ad alcun canale.';
+  String get channelsEmptyPlaceholderHeader =>
+      'You’re not subscribed to any channels yet.';
 
   @override
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  ) {
-    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override

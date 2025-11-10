@@ -11,6 +11,7 @@ import '../model/binding.dart';
 import 'actions.dart';
 import 'content.dart';
 import 'dialog.dart';
+import 'image.dart';
 import 'message_list.dart';
 import 'page.dart';
 import 'store.dart';
@@ -32,7 +33,7 @@ class _LightboxHeroTag {
     required this.src,
   });
 
-  /// The [BuildContext] for the [MessageImage] being expanded into the lightbox.
+  /// The [BuildContext] for the [MessageImagePreview] being expanded into the lightbox.
   ///
   /// In particular this prevents hero animations between
   /// different message lists that happen to have the same message.
@@ -45,7 +46,7 @@ class _LightboxHeroTag {
   ///
   /// This ensures the animation only occurs between matching images, even if
   /// the message was edited before navigating back to the message list
-  /// so that the original [MessageImage] has been replaced in the tree
+  /// so that the original [MessageImagePreview] has been replaced in the tree
   /// by a different image.
   final Uri src;
 

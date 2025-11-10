@@ -74,8 +74,8 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get allChannelsPageTitle => 'Wszystkie kanały';
 
   @override
-  String get allChannelsEmptyPlaceholder =>
-      'Brak kanałów, które możesz przeglądać w tej organizacji.';
+  String get allChannelsEmptyPlaceholderHeader =>
+      'Brak kanałów do których masz wgląd w tej organizacji.';
 
   @override
   String get profileButtonSendDirectMessage => 'Wyślij wiadomość bezpośrednią';
@@ -127,7 +127,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get unsubscribeConfirmationDialogMessageCannotResubscribe =>
-      'Once you leave this channel, you will not be able to rejoin.';
+      'Opuszczając ten kanał utracisz możliwość ponownego przyłączenia.';
 
   @override
   String get unsubscribeConfirmationDialogConfirmButton => 'Odsubskrybuj';
@@ -290,7 +290,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get errorCouldNotAccessUploadedFileTitle =>
-      'Could not access uploaded file';
+      'Brak dostępu do załadowanego pliku';
 
   @override
   String get errorCopyingFailed => 'Nie udało się skopiować';
@@ -443,13 +443,13 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get composeBoxBannerLabelUnsubscribedWhenCannotSend =>
-      'New messages will not appear automatically.';
+      'Nowe wiadomości nie pojawią się z automatu.';
 
   @override
-  String get composeBoxBannerButtonRefresh => 'Refresh';
+  String get composeBoxBannerButtonRefresh => 'Odśwież';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'Subscribe';
+  String get composeBoxBannerButtonSubscribe => 'Subskrybuj';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Zmień wiadomość';
@@ -528,7 +528,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get composeBoxGroupDmContentHint => 'Napisz do grupy';
 
   @override
-  String get composeBoxSelfDmContentHint => 'Zanotuj coś na przyszłość';
+  String get composeBoxSelfDmContentHint => 'Zostaw notatkę dla siebie';
 
   @override
   String composeBoxChannelContentHint(String destination) {
@@ -674,8 +674,15 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Proszę podaj nazwę użytkownika.';
 
   @override
-  String get topicValidationErrorTooLong =>
-      'Tytuł nie może być dłuższy niż 60 znaków.';
+  String topicValidationErrorTooLong(int maxLength) {
+    String _temp0 = intl.Intl.pluralLogic(
+      maxLength,
+      locale: localeName,
+      other: '$maxLength znaków',
+      one: '1 znak',
+    );
+    return 'Długość wątku nie może być dłuższa niż $_temp0.';
+  }
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>
@@ -790,7 +797,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get yesterday => 'Wczoraj';
 
   @override
-  String get userActiveNow => 'Dostępny';
+  String get userActiveNow => 'Teraz dostępny';
 
   @override
   String get userIdle => 'Bezczynny';
@@ -927,8 +934,12 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get inboxPageTitle => 'Odebrane';
 
   @override
-  String get inboxEmptyPlaceholder =>
-      'Obecnie brak nowych wiadomości. Skorzystaj z przycisków u dołu ekranu aby przejść do widoku mieszanego lub listy kanałów.';
+  String get inboxEmptyPlaceholderHeader =>
+      'Brak nieprzeczytanych wiadomości w odebranych.';
+
+  @override
+  String get inboxEmptyPlaceholderMessage =>
+      'Użyj poniższych przycisków aby skorzystać z widoku mieszanego lub listy kanałów.';
 
   @override
   String get recentDmConversationsPageTitle => 'Wiadomości bezpośrednie';
@@ -937,8 +948,12 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Wiadomości bezpośrednie';
 
   @override
-  String get recentDmConversationsEmptyPlaceholder =>
-      'Brak wiadomości w archiwum! Może warto rozpocząć dyskusję?';
+  String get recentDmConversationsEmptyPlaceholderHeader =>
+      'Póki co brak prywatnych wiadomości!';
+
+  @override
+  String get recentDmConversationsEmptyPlaceholderMessage =>
+      'A może by tak rozpocząć rozmowę?';
 
   @override
   String get combinedFeedPageTitle => 'Mieszany widok';
@@ -953,13 +968,12 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get channelsPageTitle => 'Kanały';
 
   @override
-  String get channelsEmptyPlaceholder => 'Nie śledzisz żadnego z kanałów.';
+  String get channelsEmptyPlaceholderHeader =>
+      'Nie śledzisz żadnego z kanałów.';
 
   @override
-  String channelsEmptyPlaceholderWithAllChannelsLink(
-    String allChannelsPageTitle,
-  ) {
-    return 'Nie śledzisz żadnego z kanałów. Sprawdź dostępne <z-link>$allChannelsPageTitle</z-link> i dołącz do części z nich.';
+  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
+    return 'Spróbuj skorzystać z <z-link>$allChannelsPageTitle</z-link> i dołączyć do nich.';
   }
 
   @override
