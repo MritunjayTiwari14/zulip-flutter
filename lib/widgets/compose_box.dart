@@ -1989,7 +1989,6 @@ class _ComposeBoxState extends State<ComposeBox> with PerAccountStoreAwareStateM
     final store = PerAccountStoreWidget.of(context);
     final outboxMessage = store.takeOutboxMessage(localMessageId);
     setState(() {
-      this.controller.dispose();
       _setNewController(store);
       final controller = this.controller;
       controller
