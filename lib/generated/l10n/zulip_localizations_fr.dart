@@ -76,7 +76,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
 
   @override
   String get allChannelsEmptyPlaceholderHeader =>
-      'Il n\'y a pas de canal que vous pouvez visualiser dans cette organisation.';
+      'There are no channels you can view in this organization.';
 
   @override
   String get profileButtonSendDirectMessage => 'Envoyer un message direct';
@@ -100,7 +100,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       'Pour charger des fichiers, merci d\'accorder des autorisations supplémentaires à Zulip, dans les préférences.';
 
   @override
-  String get actionSheetOptionSubscribe => 'S\'abonner';
+  String get actionSheetOptionSubscribe => 'Subscribe';
 
   @override
   String get subscribeFailedTitle => 'Failed to subscribe';
@@ -453,7 +453,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get composeBoxBannerButtonRefresh => 'Refresh';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'S\'abonner';
+  String get composeBoxBannerButtonSubscribe => 'Subscribe';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Editer le message';
@@ -505,7 +505,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get composeBoxGenericContentHint => 'Type a message';
 
   @override
-  String get newDmSheetComposeButtonLabel => 'Rédiger';
+  String get newDmSheetComposeButtonLabel => 'Compose';
 
   @override
   String get newDmSheetScreenTitle => 'New DM';
@@ -542,13 +542,13 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get preparingEditMessageContentInput => 'Preparing…';
 
   @override
-  String get composeBoxSendTooltip => 'Envoyer';
+  String get composeBoxSendTooltip => 'Send';
 
   @override
   String get unknownChannelName => '(unknown channel)';
 
   @override
-  String get composeBoxTopicHintText => 'Sujet';
+  String get composeBoxTopicHintText => 'Topic';
 
   @override
   String composeBoxEnterTopicOrSkipHintText(String defaultTopicName) {
@@ -566,7 +566,7 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   }
 
   @override
-  String get unknownUserName => '(utilisateur inconnu)';
+  String get unknownUserName => '(unknown user)';
 
   @override
   String get dmsWithYourselfPageTitle => 'DMs with yourself';
