@@ -426,15 +426,11 @@ class MessageStoreImpl extends HasChannelStore with MessageStore, _OutboxMessage
     for (int i = 0; i < messages.length; i++) {
       final message = messages[i];
       messages[i] = this.messages.putIfAbsent(message.id, () {
-        return _stripMatchFields(message);
+        message.matchContent = null;
+        message.matchTopic = null;
+        return message;
       });
     }
-  }
-
-  Message _stripMatchFields(Message message) {
-    message.matchContent = null;
-    message.matchTopic = null;
-    return message;
   }
 
   @override
