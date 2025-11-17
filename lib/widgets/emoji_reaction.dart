@@ -225,9 +225,7 @@ class ReactionChip extends StatelessWidget {
     ).resolve(store.userSettings);
 
     final emoji = switch (emojiDisplay) {
-      UnicodeEmojiDisplay() => UnicodeEmojiWidget(
-        size: _squareEmojiSize,
-        textScaler: _squareEmojiScalerClamped(context),
+      UnicodeEmojiDisplay() => _UnicodeEmoji(
         emojiDisplay: emojiDisplay),
       ImageEmojiDisplay() => _ImageEmoji(
         emojiDisplay: emojiDisplay, emojiName: emojiName, selected: selfVoted),
@@ -337,6 +335,20 @@ TextScaler _textEmojiScalerClamped(BuildContext context) =>
 // TODO(a11y) clamp higher?
 TextScaler _labelTextScalerClamped(BuildContext context) =>
   MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 2);
+
+class _UnicodeEmoji extends StatelessWidget {
+  const _UnicodeEmoji({required this.emojiDisplay});
+
+  final UnicodeEmojiDisplay emojiDisplay;
+
+  @override
+  Widget build(BuildContext context) {
+    return UnicodeEmojiWidget(
+      size: _squareEmojiSize,
+      textScaler: _squareEmojiScalerClamped(context),
+      emojiDisplay: emojiDisplay);
+  }
+}
 
 class _ImageEmoji extends StatelessWidget {
   const _ImageEmoji({
