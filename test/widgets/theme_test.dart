@@ -22,11 +22,11 @@ void main() {
   group('button text size and letter spacing', () {
     const buttonText = 'Zulip';
 
-    void doCheck(
+    Future<void> doCheck(
       String description, {
       required Widget button,
       double? ambientTextScaleFactor,
-    }) {
+    }) async {
       testWidgets(description, (tester) async {
         addTearDown(testBinding.reset);
         if (ambientTextScaleFactor != null) {

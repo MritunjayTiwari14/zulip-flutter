@@ -88,13 +88,13 @@ void main() {
   });
 
   group('weightVariableTextStyle', () {
-    void testWeights(
+    Future<void> testWeights(
       String description, {
       required TextStyle Function(BuildContext context) styleBuilder,
       bool platformRequestsBold = false,
       required List<FontVariation> expectedFontVariations,
       required FontWeight expectedFontWeight,
-    }) {
+    }) async {
       testWidgets(description, (tester) async {
         addTearDown(testBinding.reset);
         tester.platformDispatcher.accessibilityFeaturesTestValue =
@@ -179,13 +179,13 @@ void main() {
   });
 
   group('bolderWghtTextStyle', () {
-    void testBolderWghtTextStyle(
+    Future<void> testBolderWghtTextStyle(
       String description, {
       required TextStyle Function(BuildContext context) makeStyle,
       bool platformRequestsBold = false,
       required double expectedWght,
       required FontWeight expectedFontWeight,
-    }) {
+    }) async {
       testWidgets(description, (tester) async {
         addTearDown(testBinding.reset);
         tester.platformDispatcher.accessibilityFeaturesTestValue =
@@ -340,12 +340,12 @@ void main() {
   });
 
   group('proportionalLetterSpacing', () {
-    void testLetterSpacing(
+    Future<void> testLetterSpacing(
       String description, {
       required double Function(BuildContext context) getValue,
       double? ambientTextScaleFactor,
       required double expected,
-    }) {
+    }) async {
       testWidgets(description, (tester) async {
         addTearDown(testBinding.reset);
         if (ambientTextScaleFactor != null) {
@@ -394,7 +394,7 @@ void main() {
   });
 
   group('localizedTextBaseline', () {
-    void testLocalizedTextBaseline(Locale locale, TextBaseline expected) {
+    Future<void> testLocalizedTextBaseline(Locale locale, TextBaseline expected) async {
       testWidgets('gives $expected for $locale', (tester) async {
         addTearDown(testBinding.reset);
         tester.platformDispatcher.localeTestValue = locale;
