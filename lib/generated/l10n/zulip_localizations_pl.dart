@@ -75,7 +75,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get allChannelsEmptyPlaceholderHeader =>
-      'Brak kanałów do których masz wgląd w tej organizacji.';
+      'There are no channels you can view in this organization.';
 
   @override
   String get profileButtonSendDirectMessage => 'Wyślij wiadomość bezpośrednią';
@@ -675,13 +675,7 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String topicValidationErrorTooLong(int maxLength) {
-    String _temp0 = intl.Intl.pluralLogic(
-      maxLength,
-      locale: localeName,
-      other: '$maxLength znaków',
-      one: '1 znak',
-    );
-    return 'Długość wątku nie może być dłuższa niż $_temp0.';
+    return 'Tytuł nie może być dłuższy niż 60 znaków.';
   }
 
   @override
@@ -935,11 +929,11 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get inboxEmptyPlaceholderHeader =>
-      'Brak nieprzeczytanych wiadomości w odebranych.';
+      'There are no unread messages in your inbox.';
 
   @override
   String get inboxEmptyPlaceholderMessage =>
-      'Użyj poniższych przycisków aby skorzystać z widoku mieszanego lub listy kanałów.';
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
   String get recentDmConversationsPageTitle => 'Wiadomości bezpośrednie';
@@ -949,11 +943,11 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get recentDmConversationsEmptyPlaceholderHeader =>
-      'Póki co brak prywatnych wiadomości!';
+      'You have no direct messages yet!';
 
   @override
   String get recentDmConversationsEmptyPlaceholderMessage =>
-      'A może by tak rozpocząć rozmowę?';
+      'Why not start a conversation?';
 
   @override
   String get combinedFeedPageTitle => 'Mieszany widok';
@@ -969,11 +963,11 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
 
   @override
   String get channelsEmptyPlaceholderHeader =>
-      'Nie śledzisz żadnego z kanałów.';
+      'You’re not subscribed to any channels yet.';
 
   @override
   String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Spróbuj skorzystać z <z-link>$allChannelsPageTitle</z-link> i dołączyć do nich.';
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override

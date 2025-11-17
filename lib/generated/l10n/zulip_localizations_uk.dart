@@ -75,7 +75,7 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
 
   @override
   String get allChannelsEmptyPlaceholderHeader =>
-      'У цій організації немає каналів, які ви можете переглянути.';
+      'There are no channels you can view in this organization.';
 
   @override
   String get profileButtonSendDirectMessage =>
@@ -677,13 +677,7 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
 
   @override
   String topicValidationErrorTooLong(int maxLength) {
-    String _temp0 = intl.Intl.pluralLogic(
-      maxLength,
-      locale: localeName,
-      other: '$maxLength символів',
-      one: '1 символ',
-    );
-    return 'Довжина теми не повинна перевищувати $_temp0.';
+    return 'Довжина теми не повинна перевищувати 60 символів.';
   }
 
   @override
@@ -936,11 +930,11 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
 
   @override
   String get inboxEmptyPlaceholderHeader =>
-      'У вашій папці \"Вхідні\" немає непрочитаних повідомлень.';
+      'There are no unread messages in your inbox.';
 
   @override
   String get inboxEmptyPlaceholderMessage =>
-      'Скористайтеся кнопками нижче, щоб переглянути об’єднану стрічку або список каналів.';
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
   String get recentDmConversationsPageTitle => 'Особисті повідомлення';
@@ -950,11 +944,11 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
 
   @override
   String get recentDmConversationsEmptyPlaceholderHeader =>
-      'У вас ще немає прямих повідомлень!';
+      'You have no direct messages yet!';
 
   @override
   String get recentDmConversationsEmptyPlaceholderMessage =>
-      'Чому б не почати розмову?';
+      'Why not start a conversation?';
 
   @override
   String get combinedFeedPageTitle => 'Об\'єднана стрічка';
@@ -970,11 +964,11 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
 
   @override
   String get channelsEmptyPlaceholderHeader =>
-      'Ви ще не підписані на жодний канал.';
+      'You’re not subscribed to any channels yet.';
 
   @override
   String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Спробуйте перейти за посиланням <z-link>$allChannelsPageTitle</z-link> та приєднатися до деяких із них.';
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override

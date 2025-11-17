@@ -75,7 +75,7 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get allChannelsEmptyPlaceholderHeader =>
-      'В этой организации нет каналов, которые вы можете просматривать.';
+      'There are no channels you can view in this organization.';
 
   @override
   String get profileButtonSendDirectMessage => 'Отправить личное сообщение';
@@ -678,15 +678,7 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String topicValidationErrorTooLong(int maxLength) {
-    String _temp0 = intl.Intl.pluralLogic(
-      maxLength,
-      locale: localeName,
-      other: '$maxLength символов',
-      many: '$maxLength символов',
-      few: '$maxLength символа',
-      one: '$maxLength символ',
-    );
-    return 'Длина темы не должна превышать $_temp0.';
+    return 'Длина темы не должна превышать 60 символов.';
   }
 
   @override
@@ -946,11 +938,11 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get inboxEmptyPlaceholderHeader =>
-      'У вас нет непрочитанных входящих сообщений.';
+      'There are no unread messages in your inbox.';
 
   @override
   String get inboxEmptyPlaceholderMessage =>
-      'Используйте кнопки внизу для просмотра объединенной ленты или списка каналов.';
+      'Use the buttons below to view the combined feed or list of channels.';
 
   @override
   String get recentDmConversationsPageTitle => 'Личные сообщения';
@@ -960,11 +952,11 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get recentDmConversationsEmptyPlaceholderHeader =>
-      'У вас пока нет личных сообщений!';
+      'You have no direct messages yet!';
 
   @override
   String get recentDmConversationsEmptyPlaceholderMessage =>
-      'Почему бы не начать общение?';
+      'Why not start a conversation?';
 
   @override
   String get combinedFeedPageTitle => 'Объединенная лента';
@@ -980,11 +972,11 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get channelsEmptyPlaceholderHeader =>
-      'Вы пока не подписаны ни на один канал.';
+      'You’re not subscribed to any channels yet.';
 
   @override
   String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Вы можете просмотреть <z-link>$allChannelsPageTitle</z-link> и присоединиться к некоторым из них.';
+    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override
