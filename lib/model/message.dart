@@ -408,20 +408,7 @@ class MessageStoreImpl extends HasChannelStore with MessageStore, _OutboxMessage
 
   void reconcileMessages(List<Message> messages) {
     assert(!_disposed);
-    for (int i = 0; i < messages.length; i++) {
-      final message = messages[i];
-      messages[i] = this.messages.update(message.id,
-        ifAbsent: () => _reconcileUnrecognizedMessage(message),
-        (current) => _reconcileRecognizedMessage(current, message));
-    }
-  }
-
-  Message _reconcileUnrecognizedMessage(Message incoming) {
-    return _stripMatchFields(incoming);
-  }
-
-  Message _reconcileRecognizedMessage(Message current, Message incoming) {
-    // This just-fetched message is one we already know about.
+    // What to do when some of the just-fetched messages are already known?
     // This is common and normal: in particular it happens when one message list
     // overlaps another, e.g. a stream and a topic within it.
     //
@@ -436,8 +423,12 @@ class MessageStoreImpl extends HasChannelStore with MessageStore, _OutboxMessage
     // we won't hear those events again; the only way to wind up with an
     // updated message is to use the version we have, that already reflects
     // those events' changes.  So we always stick with the version we have.
-    // TODO(#1798) consider unsubscribed channels
-    return current;
+    for (int i = 0; i < messages.length; i++) {
+      final message = messages[i];
+      messages[i] = this.messages.putIfAbsent(message.id, () {
+        return _stripMatchFields(message);
+      });
+    }
   }
 
   Message _stripMatchFields(Message message) {
