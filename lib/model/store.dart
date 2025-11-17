@@ -821,17 +821,11 @@ class PerAccountStore extends PerAccountStoreBase with
 
       case ChannelEvent():
         assert(debugLog("server event: stream/${event.op}"));
-        if (event is ChannelDeleteEvent) {
-          _messages.handleChannelDeleteEvent(event);
-        }
         _channels.handleChannelEvent(event);
         notifyListeners();
 
       case SubscriptionEvent():
         assert(debugLog("server event: subscription/${event.op}"));
-        if (event is SubscriptionRemoveEvent) {
-          _messages.handleSubscriptionRemoveEvent(event);
-        }
         _channels.handleSubscriptionEvent(event);
         notifyListeners();
 
