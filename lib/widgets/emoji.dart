@@ -13,7 +13,7 @@ class EmojiWidget extends StatelessWidget {
     required this.squareDimension,
     this.squareDimensionScaler = TextScaler.noScaling,
     this.imagePlaceholderStyle = EmojiImagePlaceholderStyle.square,
-    this.imageAnimationMode = ImageAnimationMode.animateConditionally,
+    this.neverAnimateImage = false,
     this.buildCustomTextEmoji,
   });
 
@@ -35,12 +35,11 @@ class EmojiWidget extends StatelessWidget {
 
   final EmojiImagePlaceholderStyle imagePlaceholderStyle;
 
-  /// Whether to show an animated emoji in its still or animated version.
+  /// Whether to show an animated emoji in its still (non-animated) variant
+  /// only, even if device settings permit animation.
   ///
-  /// Ignored except for animated image emoji.
-  ///
-  /// Defaults to [ImageAnimationMode.animateConditionally].
-  final ImageAnimationMode imageAnimationMode;
+  /// Defaults to false.
+  final bool neverAnimateImage;
 
   /// An optional callback to specify a custom plain-text emoji style.
   ///
@@ -67,7 +66,7 @@ class EmojiWidget extends StatelessWidget {
           EmojiImagePlaceholderStyle.nothing => SizedBox.shrink(),
           EmojiImagePlaceholderStyle.text => _buildTextEmoji(),
         },
-        animationMode: imageAnimationMode),
+        neverAnimate: neverAnimateImage),
       UnicodeEmojiDisplay() => UnicodeEmojiWidget(
         emojiDisplay: emojiDisplay,
         size: squareDimension,
@@ -186,7 +185,7 @@ class ImageEmojiWidget extends StatelessWidget {
     required this.size,
     this.textScaler = TextScaler.noScaling,
     this.errorBuilder,
-    this.animationMode = ImageAnimationMode.animateConditionally,
+    this.neverAnimate = false,
   });
 
   final ImageEmojiDisplay emojiDisplay;
@@ -203,20 +202,30 @@ class ImageEmojiWidget extends StatelessWidget {
 
   final ImageErrorWidgetBuilder? errorBuilder;
 
-  /// Whether to show an animated emoji in its still or animated version.
+  /// Whether to show an animated emoji in its still (non-animated) variant
+  /// only, even if device settings permit animation.
   ///
-  /// Ignored for non-animated emoji.
-  ///
-  /// Defaults to [ImageAnimationMode.animateConditionally].
-  final ImageAnimationMode animationMode;
+  /// Defaults to false.
+  final bool neverAnimate;
 
   @override
   Widget build(BuildContext context) {
+    final doNotAnimate =
+      neverAnimate
+      // From reading code, this doesn't actually get set on iOS:
+      //   https://github.com/zulip/zulip-flutter/pull/410#discussion_r1408522293
+      || MediaQuery.disableAnimationsOf(context)
+      || (defaultTargetPlatform == TargetPlatform.iOS
+        // TODO(#1924) On iOS 17+ (new in 2023), there's a more closely
+        //   relevant setting than "reduce motion". It's called "auto-play
+        //   animated images"; we should use that once Flutter exposes it.
+        && WidgetsBinding.instance.platformDispatcher.accessibilityFeatures.reduceMotion);
+
     final size = textScaler.scale(this.size);
 
-    final resolvedUrl = animationMode.resolve(context)
-      ? emojiDisplay.resolvedUrl
-      : (emojiDisplay.resolvedStillUrl ?? emojiDisplay.resolvedUrl);
+    final resolvedUrl = doNotAnimate
+      ? (emojiDisplay.resolvedStillUrl ?? emojiDisplay.resolvedUrl)
+      : emojiDisplay.resolvedUrl;
 
     return RealmContentNetworkImage(
       width: size, height: size,

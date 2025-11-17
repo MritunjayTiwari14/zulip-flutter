@@ -16,7 +16,6 @@ import 'package:zulip/model/store.dart';
 import 'package:zulip/model/typing_status.dart';
 import 'package:zulip/widgets/autocomplete.dart';
 import 'package:zulip/widgets/compose_box.dart';
-import 'package:zulip/widgets/image.dart';
 import 'package:zulip/widgets/message_list.dart';
 import 'package:zulip/widgets/user.dart';
 
@@ -213,7 +212,7 @@ void main() {
           matching: find.byType(UserStatusEmoji));
         check(statusEmojiFinder).findsOne();
         check(tester.widget<UserStatusEmoji>(statusEmojiFinder)
-          .animationMode).equals(ImageAnimationMode.animateNever);
+          .neverAnimate).isTrue();
         check(find.ancestor(of: statusEmojiFinder,
           matching: find.byType(MentionAutocompleteItem))).findsOne();
       }

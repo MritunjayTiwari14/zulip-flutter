@@ -1870,7 +1870,7 @@ void main() {
           matching: find.byType(UserStatusEmoji));
         check(statusEmojiFinder).findsOne();
         check(tester.widget<UserStatusEmoji>(statusEmojiFinder)
-          .animationMode).equals(ImageAnimationMode.animateNever);
+          .neverAnimate).isTrue();
         check(find.ancestor(of: statusEmojiFinder,
           matching: find.byType(SenderRow))).findsOne();
       }
