@@ -68,11 +68,10 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get chooseAccountButtonAddAnAccount => 'Aggiungi un account';
 
   @override
-  String get navButtonAllChannels =>
-      'Titolo per un pulsante di navigazione che apre la pagina \"Tutti i canali\".';
+  String get navButtonAllChannels => 'All channels';
 
   @override
-  String get allChannelsPageTitle => 'Titolo per la pagina \"Tutti i canali\".';
+  String get allChannelsPageTitle => 'All channels';
 
   @override
   String get allChannelsEmptyPlaceholder =>
@@ -445,8 +444,7 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
       'New messages will not appear automatically.';
 
   @override
-  String get composeBoxBannerButtonRefresh =>
-      'Etichetta il testo per il pulsante \"Aggiorna\" nel banner della casella di composizione quando visualizzi un canale a cui non sei iscritto.';
+  String get composeBoxBannerButtonRefresh => 'Refresh';
 
   @override
   String get composeBoxBannerButtonSubscribe => 'Subscribe';
@@ -916,12 +914,10 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
       'Error updating user status. Please try again.';
 
   @override
-  String get searchMessagesPageTitle =>
-      'Titolo della pagina per la visualizzazione del messaggio \"Cerca\".';
+  String get searchMessagesPageTitle => 'Search';
 
   @override
-  String get searchMessagesHintText =>
-      'Testo di suggerimento per il campo di testo di ricerca del messaggio.';
+  String get searchMessagesHintText => 'Search';
 
   @override
   String get searchMessagesClearButtonTooltip => 'Clear';

@@ -127,7 +127,7 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get unsubscribeConfirmationDialogMessageCannotResubscribe =>
-      'Если вы покинете этот канал, вы не сможете к нему присоединиться.';
+      'Once you leave this channel, you will not be able to rejoin.';
 
   @override
   String get unsubscribeConfirmationDialogConfirmButton => 'Отписаться';
@@ -291,7 +291,7 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get errorCouldNotAccessUploadedFileTitle =>
-      'Не удалось получить доступ к загруженному файлу';
+      'Could not access uploaded file';
 
   @override
   String get errorCopyingFailed => 'Сбой копирования';
@@ -445,13 +445,13 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
 
   @override
   String get composeBoxBannerLabelUnsubscribedWhenCannotSend =>
-      'Новые сообщения не будут отображаться автоматически.';
+      'New messages will not appear automatically.';
 
   @override
-  String get composeBoxBannerButtonRefresh => 'Обновить';
+  String get composeBoxBannerButtonRefresh => 'Refresh';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'Подписаться';
+  String get composeBoxBannerButtonSubscribe => 'Subscribe';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Редактирование сообщения';
@@ -529,7 +529,7 @@ class ZulipLocalizationsRu extends ZulipLocalizations {
   String get composeBoxGroupDmContentHint => 'Сообщение для группы';
 
   @override
-  String get composeBoxSelfDmContentHint => 'Написать себе записку';
+  String get composeBoxSelfDmContentHint => 'Сделать заметку';
 
   @override
   String composeBoxChannelContentHint(String destination) {

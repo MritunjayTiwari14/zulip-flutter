@@ -162,15 +162,14 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       'Impossible de marquer le sujet comme non résolu';
 
   @override
-  String get actionSheetOptionSeeWhoReacted => 'Voir qui a réagi';
+  String get actionSheetOptionSeeWhoReacted => 'See who reacted';
 
   @override
-  String get seeWhoReactedSheetNoReactions =>
-      'Aucune réaction associée à ce message.';
+  String get seeWhoReactedSheetNoReactions => 'This message has no reactions.';
 
   @override
   String seeWhoReactedSheetHeaderLabel(int num) {
-    return 'Réactions emoji ($num total)';
+    return 'Emoji reactions ($num total)';
   }
 
   @override
@@ -181,38 +180,38 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       other: '$num votes',
       one: '1 vote',
     );
-    return '$emojiName : $_temp0';
+    return '$emojiName: $_temp0';
   }
 
   @override
   String seeWhoReactedSheetUserListLabel(String emojiName, int num) {
-    return 'Votes pour $emojiName ($num)';
+    return 'Votes for $emojiName ($num)';
   }
 
   @override
-  String get actionSheetOptionViewReadReceipts => 'Voir accusés de réception';
+  String get actionSheetOptionViewReadReceipts => 'View read receipts';
 
   @override
-  String get actionSheetReadReceipts => 'Accusés de réception';
+  String get actionSheetReadReceipts => 'Read receipts';
 
   @override
   String actionSheetReadReceiptsReadCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Ce message a été <z-link>lu</z-link> par $count personnes :',
-      one: 'Ce message a été <z-link>lu</z-link> par $count personne:',
+      other: 'This message has been <z-link>read</z-link> by $count people:',
+      one: 'This message has been <z-link>read</z-link> by $count person:',
     );
     return '$_temp0';
   }
 
   @override
   String get actionSheetReadReceiptsZeroReadCount =>
-      'Personne n\'a encore lu ce message.';
+      'No one has read this message yet.';
 
   @override
   String get actionSheetReadReceiptsErrorReadCount =>
-      'Échec du chargement des accusés de réception.';
+      'Failed to load read receipts.';
 
   @override
   String get actionSheetOptionCopyMessageText => 'Copier le contenu du message';
@@ -244,21 +243,20 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get actionSheetOptionEditMessage => 'Modifier le message';
 
   @override
-  String get actionSheetOptionDeleteMessage => 'Supprimer message';
+  String get actionSheetOptionDeleteMessage => 'Delete message';
 
   @override
-  String get deleteMessageConfirmationDialogTitle => 'Supprimer message ?';
+  String get deleteMessageConfirmationDialogTitle => 'Delete message?';
 
   @override
   String get deleteMessageConfirmationDialogMessage =>
-      'Supprimer un message de façon permanente le supprime pour tout le monde.';
+      'Deleting a message permanently removes it for everyone.';
 
   @override
-  String get deleteMessageConfirmationDialogConfirmButton => 'Supprimer';
+  String get deleteMessageConfirmationDialogConfirmButton => 'Delete';
 
   @override
-  String get errorDeleteMessageFailedTitle =>
-      'Échec de la suppression du message';
+  String get errorDeleteMessageFailedTitle => 'Failed to delete message';
 
   @override
   String get actionSheetOptionMarkTopicAsRead => 'Marquer le sujet comme lu';
@@ -860,120 +858,120 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
   String get userRoleModerator => 'Moderator';
 
   @override
-  String get userRoleMember => 'Membre';
+  String get userRoleMember => 'Member';
 
   @override
-  String get userRoleGuest => 'Invité.e';
+  String get userRoleGuest => 'Guest';
 
   @override
-  String get userRoleUnknown => 'Inconnu';
+  String get userRoleUnknown => 'Unknown';
 
   @override
-  String get statusButtonLabelStatusSet => 'Statut';
+  String get statusButtonLabelStatusSet => 'Status';
 
   @override
-  String get statusButtonLabelStatusUnset => 'Définir mon statut';
+  String get statusButtonLabelStatusUnset => 'Set status';
 
   @override
-  String get noStatusText => 'Statut sans texte';
+  String get noStatusText => 'No status text';
 
   @override
-  String get setStatusPageTitle => 'Définir statut';
+  String get setStatusPageTitle => 'Set status';
 
   @override
-  String get statusClearButtonLabel => 'Effacer';
+  String get statusClearButtonLabel => 'Clear';
 
   @override
-  String get statusSaveButtonLabel => 'Sauvegarder';
+  String get statusSaveButtonLabel => 'Save';
 
   @override
-  String get statusTextHint => 'Votre statut';
+  String get statusTextHint => 'Your status';
 
   @override
-  String get userStatusBusy => 'Occupé';
+  String get userStatusBusy => 'Busy';
 
   @override
-  String get userStatusInAMeeting => 'En réunion';
+  String get userStatusInAMeeting => 'In a meeting';
 
   @override
-  String get userStatusCommuting => 'En déplacement';
+  String get userStatusCommuting => 'Commuting';
 
   @override
-  String get userStatusOutSick => 'Malade';
+  String get userStatusOutSick => 'Out sick';
 
   @override
-  String get userStatusVacationing => 'En vacances';
+  String get userStatusVacationing => 'Vacationing';
 
   @override
-  String get userStatusWorkingRemotely => 'En télétravail';
+  String get userStatusWorkingRemotely => 'Working remotely';
 
   @override
-  String get userStatusAtTheOffice => 'Au bureau';
+  String get userStatusAtTheOffice => 'At the office';
 
   @override
   String get updateStatusErrorTitle =>
-      'Erreur lors de la mise à jour du statut de l\'utilisateur. Merci de réessayer.';
+      'Error updating user status. Please try again.';
 
   @override
-  String get searchMessagesPageTitle => 'Recherche';
+  String get searchMessagesPageTitle => 'Search';
 
   @override
-  String get searchMessagesHintText => 'Recherche';
+  String get searchMessagesHintText => 'Search';
 
   @override
-  String get searchMessagesClearButtonTooltip => 'Effacer';
+  String get searchMessagesClearButtonTooltip => 'Clear';
 
   @override
-  String get inboxPageTitle => 'Boîte de réception';
+  String get inboxPageTitle => 'Inbox';
 
   @override
   String get inboxEmptyPlaceholder =>
-      'Aucun message non lu dans votre boîte de réception. Utilisez les boutons ci-dessous pour voir le fil groupé ou la liste des chaînes.';
+      'There are no unread messages in your inbox. Use the buttons below to view the combined feed or list of channels.';
 
   @override
-  String get recentDmConversationsPageTitle => 'Messages directs';
+  String get recentDmConversationsPageTitle => 'Direct messages';
 
   @override
-  String get recentDmConversationsSectionHeader => 'Messages directs';
+  String get recentDmConversationsSectionHeader => 'Direct messages';
 
   @override
   String get recentDmConversationsEmptyPlaceholder =>
-      'Vous n\'avez aucun message direct pour l\'instant ! Et si vous lanciez une conversation ?';
+      'You have no direct messages yet! Why not start the conversation?';
 
   @override
-  String get combinedFeedPageTitle => 'Fil groupé';
+  String get combinedFeedPageTitle => 'Combined feed';
 
   @override
   String get mentionsPageTitle => 'Mentions';
 
   @override
-  String get starredMessagesPageTitle => 'Messages favoris';
+  String get starredMessagesPageTitle => 'Starred messages';
 
   @override
-  String get channelsPageTitle => 'Chaînes';
+  String get channelsPageTitle => 'Channels';
 
   @override
   String get channelsEmptyPlaceholder =>
-      'Vous n\'êtes abonné à aucune chaîne pour l\'instant.';
+      'You’re not subscribed to any channels yet.';
 
   @override
   String channelsEmptyPlaceholderWithAllChannelsLink(
     String allChannelsPageTitle,
   ) {
-    return 'Vous n\'êtes abonné à aucune chaîne pour l\'instant. Allez sur <z-link>$allChannelsPageTitle</z-link> pour vous abonner.';
+    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override
-  String get sharePageTitle => 'Partager';
+  String get sharePageTitle => 'Share';
 
   @override
-  String get mainMenuMyProfile => 'Mon profil';
+  String get mainMenuMyProfile => 'My profile';
 
   @override
-  String get topicsButtonTooltip => 'Sujets';
+  String get topicsButtonTooltip => 'Topics';
 
   @override
-  String get channelFeedButtonTooltip => 'Fil de la chaîne';
+  String get channelFeedButtonTooltip => 'Channel feed';
 
   @override
   String notifGroupDmConversationLabel(String senderFullName, int numOthers) {
@@ -983,27 +981,27 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
       other: '$numOthers others',
       one: '1 other',
     );
-    return '$senderFullName à vous et $_temp0';
+    return '$senderFullName to you and $_temp0';
   }
 
   @override
-  String get pinnedSubscriptionsLabel => 'Épinglé';
+  String get pinnedSubscriptionsLabel => 'Pinned';
 
   @override
-  String get unpinnedSubscriptionsLabel => 'Désépingler';
+  String get unpinnedSubscriptionsLabel => 'Unpinned';
 
   @override
-  String get notifSelfUser => 'Vous';
+  String get notifSelfUser => 'You';
 
   @override
-  String get reactedEmojiSelfUser => 'Vous';
+  String get reactedEmojiSelfUser => 'You';
 
   @override
-  String get reactionChipsLabel => 'Réactions';
+  String get reactionChipsLabel => 'Reactions';
 
   @override
   String reactionChipLabel(String emojiName, String votes) {
-    return '$emojiName : $votes';
+    return '$emojiName: $votes';
   }
 
   @override
@@ -1019,16 +1017,16 @@ class ZulipLocalizationsFr extends ZulipLocalizations {
 
   @override
   String onePersonTyping(String typist) {
-    return '$typist est en train d\'écrire…';
+    return '$typist is typing…';
   }
 
   @override
   String twoPeopleTyping(String typist, String otherTypist) {
-    return '$typist et $otherTypist sont en train d\'écrire…';
+    return '$typist and $otherTypist are typing…';
   }
 
   @override
-  String get manyPeopleTyping => 'Plusieurs personnes sont en train d\'écrire…';
+  String get manyPeopleTyping => 'Several people are typing…';
 
   @override
   String get wildcardMentionAll => 'all';

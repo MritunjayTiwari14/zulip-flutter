@@ -67,14 +67,14 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get chooseAccountButtonAddAnAccount => 'Dodaj račun';
 
   @override
-  String get navButtonAllChannels => 'Vsi kanali';
+  String get navButtonAllChannels => 'All channels';
 
   @override
-  String get allChannelsPageTitle => 'Vsi kanali';
+  String get allChannelsPageTitle => 'All channels';
 
   @override
   String get allChannelsEmptyPlaceholder =>
-      'V tej organizaciji ni kanalov, ki bi si jih lahko ogledali.';
+      'There are no channels you can view in this organization.';
 
   @override
   String get profileButtonSendDirectMessage => 'Pošlji neposredno sporočilo';
@@ -125,7 +125,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get unsubscribeConfirmationDialogMessageCannotResubscribe =>
-      'Ko zapustite kanal, se ne boste več mogli pridružiti nazaj.';
+      'Once you leave this channel, you will not be able to rejoin.';
 
   @override
   String get unsubscribeConfirmationDialogConfirmButton => 'Prekliči naročnino';
@@ -246,20 +246,20 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get actionSheetOptionEditMessage => 'Uredi sporočilo';
 
   @override
-  String get actionSheetOptionDeleteMessage => 'Izbriši sporočilo';
+  String get actionSheetOptionDeleteMessage => 'Delete message';
 
   @override
-  String get deleteMessageConfirmationDialogTitle => 'Izbrišem sporočilo?';
+  String get deleteMessageConfirmationDialogTitle => 'Delete message?';
 
   @override
   String get deleteMessageConfirmationDialogMessage =>
-      'Brisanje sporočila ga trajno odstrani za vse.';
+      'Deleting a message permanently removes it for everyone.';
 
   @override
-  String get deleteMessageConfirmationDialogConfirmButton => 'Izbriši';
+  String get deleteMessageConfirmationDialogConfirmButton => 'Delete';
 
   @override
-  String get errorDeleteMessageFailedTitle => 'Sporočila se ne da izbrisati';
+  String get errorDeleteMessageFailedTitle => 'Failed to delete message';
 
   @override
   String get actionSheetOptionMarkTopicAsRead => 'Označi temo kot prebrano';
@@ -288,7 +288,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get errorCouldNotAccessUploadedFileTitle =>
-      'Dostop do naložene datoteke ni mogoč';
+      'Could not access uploaded file';
 
   @override
   String get errorCopyingFailed => 'Kopiranje ni uspelo';
@@ -455,13 +455,13 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
 
   @override
   String get composeBoxBannerLabelUnsubscribedWhenCannotSend =>
-      'Nova sporočila se ne bodo prikazala samodejno.';
+      'New messages will not appear automatically.';
 
   @override
-  String get composeBoxBannerButtonRefresh => 'Osveži';
+  String get composeBoxBannerButtonRefresh => 'Refresh';
 
   @override
-  String get composeBoxBannerButtonSubscribe => 'Naroči se';
+  String get composeBoxBannerButtonSubscribe => 'Subscribe';
 
   @override
   String get composeBoxBannerLabelEditMessage => 'Uredi sporočilo';
@@ -540,7 +540,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get composeBoxGroupDmContentHint => 'Skupinsko sporočilo';
 
   @override
-  String get composeBoxSelfDmContentHint => 'Zapišite si opombo';
+  String get composeBoxSelfDmContentHint => 'Zapišite opombo zase';
 
   @override
   String composeBoxChannelContentHint(String destination) {
@@ -979,7 +979,7 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String channelsEmptyPlaceholderWithAllChannelsLink(
     String allChannelsPageTitle,
   ) {
-    return 'Naročeni še niste na noben kanal. Poskusite odpreti <z-link>$allChannelsPageTitle</z-link> in se pridružiti kateremu od njih.';
+    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override
