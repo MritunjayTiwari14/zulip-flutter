@@ -647,9 +647,7 @@ class ZulipLocalizationsJa extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'ユーザー名を入力してください。';
 
   @override
-  String topicValidationErrorTooLong(int maxLength) {
-    return 'トピックは60文字以内で入力してください。';
-  }
+  String get topicValidationErrorTooLong => 'トピックは60文字以内で入力してください。';
 
   @override
   String get topicValidationErrorMandatoryButEmpty => 'この組織ではトピックの入力が必須です。';

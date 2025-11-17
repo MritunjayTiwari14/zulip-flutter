@@ -676,9 +676,8 @@ class ZulipLocalizationsUk extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Введіть своє ім\'я користувача.';
 
   @override
-  String topicValidationErrorTooLong(int maxLength) {
-    return 'Довжина теми не повинна перевищувати 60 символів.';
-  }
+  String get topicValidationErrorTooLong =>
+      'Довжина теми не повинна перевищувати 60 символів.';
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>

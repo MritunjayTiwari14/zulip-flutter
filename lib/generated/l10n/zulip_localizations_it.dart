@@ -674,9 +674,8 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get loginErrorMissingUsername => 'Inserire il proprio nomeutente.';
 
   @override
-  String topicValidationErrorTooLong(int maxLength) {
-    return 'La lunghezza dell\'argomento non deve superare i 60 caratteri.';
-  }
+  String get topicValidationErrorTooLong =>
+      'La lunghezza dell\'argomento non deve superare i 60 caratteri.';
 
   @override
   String get topicValidationErrorMandatoryButEmpty =>
