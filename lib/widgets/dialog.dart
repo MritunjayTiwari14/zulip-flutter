@@ -63,14 +63,7 @@ Widget? _adaptiveContent(Widget? content) {
     case TargetPlatform.macOS:
       // A [SingleChildScrollView] (wrapping both title and content) is already
       // created by [CupertinoAlertDialog].
-      return DefaultTextStyle.merge(
-        // The "alert description" is start-aligned in one example in Apple's
-        // HIG document:
-        //   https://developer.apple.com/design/human-interface-guidelines/alerts#Anatomy
-        // (Confusingly, in 2025-10, it's center-aligned in the graphic at the
-        // *top* of that page; shrug.)
-        textAlign: TextAlign.start,
-        child: content);
+      return content;
   }
 }
 
