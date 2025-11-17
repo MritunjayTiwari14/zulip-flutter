@@ -913,7 +913,7 @@ class DmOutboxMessage extends OutboxMessage<DmConversation> {
 }
 
 /// Manages the outbox messages portion of [MessageStore].
-mixin _OutboxMessageStore on HasChannelStore {
+mixin _OutboxMessageStore on HasRealmStore {
   late final UnmodifiableMapView<int, OutboxMessage> outboxMessages =
     UnmodifiableMapView(_outboxMessages);
   final Map<int, OutboxMessage> _outboxMessages = {};
