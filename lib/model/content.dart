@@ -524,19 +524,19 @@ class MathBlockNode extends MathNode implements BlockContentNode {
   });
 }
 
-class ImagePreviewNodeList extends BlockContentNode {
-  const ImagePreviewNodeList(this.imagePreviews, {super.debugHtmlNode});
+class ImageNodeList extends BlockContentNode {
+  const ImageNodeList(this.images, {super.debugHtmlNode});
 
-  final List<ImagePreviewNode> imagePreviews;
+  final List<ImageNode> images;
 
   @override
   List<DiagnosticsNode> debugDescribeChildren() {
-    return imagePreviews.map((node) => node.toDiagnosticsNode()).toList();
+    return images.map((node) => node.toDiagnosticsNode()).toList();
   }
 }
 
-class ImagePreviewNode extends BlockContentNode {
-  const ImagePreviewNode({
+class ImageNode extends BlockContentNode {
+  const ImageNode({
     super.debugHtmlNode,
     required this.srcUrl,
     required this.thumbnailUrl,
@@ -574,7 +574,7 @@ class ImagePreviewNode extends BlockContentNode {
 
   @override
   bool operator ==(Object other) {
-    return other is ImagePreviewNode
+    return other is ImageNode
       && other.srcUrl == srcUrl
       && other.thumbnailUrl == thumbnailUrl
       && other.loading == loading
@@ -583,7 +583,7 @@ class ImagePreviewNode extends BlockContentNode {
   }
 
   @override
-  int get hashCode => Object.hash('ImagePreviewNode',
+  int get hashCode => Object.hash('ImageNode',
     srcUrl, thumbnailUrl, loading, originalWidth, originalHeight);
 
   @override
@@ -1368,7 +1368,7 @@ class _ZulipContentParser {
 
   static final _imageDimensionsRegExp = RegExp(r'^(\d+)x(\d+)$');
 
-  BlockContentNode parseImagePreviewNode(dom.Element divElement) {
+  BlockContentNode parseImageNode(dom.Element divElement) {
     final elements = () {
       assert(divElement.localName == 'div'
           && divElement.className == 'message_inline_image');
@@ -1397,7 +1397,7 @@ class _ZulipContentParser {
       return UnimplementedBlockContentNode(htmlNode: divElement);
     }
     if (imgElement.className == 'image-loading-placeholder') {
-      return ImagePreviewNode(
+      return ImageNode(
         srcUrl: href,
         thumbnailUrl: null,
         loading: true,
@@ -1450,7 +1450,7 @@ class _ZulipContentParser {
       }
     }
 
-    return ImagePreviewNode(
+    return ImageNode(
       srcUrl: srcUrl,
       thumbnailUrl: thumbnailUrl,
       loading: false,
@@ -1875,7 +1875,7 @@ class _ZulipContentParser {
     }
 
     if (localName == 'div' && className == 'message_inline_image') {
-      return parseImagePreviewNode(element);
+      return parseImageNode(element);
     }
 
     if (localName == 'div') {
@@ -1928,10 +1928,10 @@ class _ZulipContentParser {
   List<BlockContentNode> parseImplicitParagraphBlockContentList(dom.NodeList nodes) {
     final List<BlockContentNode> result = [];
 
-    List<ImagePreviewNode> imagePreviewNodes = [];
-    void consumeImagePreviewNodes() {
-      result.add(ImagePreviewNodeList(imagePreviewNodes));
-      imagePreviewNodes = [];
+    List<ImageNode> imageNodes = [];
+    void consumeImageNodes() {
+      result.add(ImageNodeList(imageNodes));
+      imageNodes = [];
     }
 
     final List<dom.Node> currentParagraph = [];
@@ -1953,14 +1953,14 @@ class _ZulipContentParser {
       if (node case dom.Element(localName: 'p', className: '', nodes: [
             dom.Element(localName: 'span', className: 'katex-display'), ...])) {
         if (currentParagraph.isNotEmpty) consumeParagraph();
-        if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+        if (imageNodes.isNotEmpty) consumeImageNodes();
         parseMathBlocks(node.nodes, result);
         continue;
       }
 
       if (_isPossibleInlineNode(node)) {
-        if (imagePreviewNodes.isNotEmpty) {
-          consumeImagePreviewNodes();
+        if (imageNodes.isNotEmpty) {
+          consumeImageNodes();
           // In a context where paragraphs are implicit it should be impossible
           // to have more paragraph content after image previews.
           result.add(UnimplementedBlockContentNode(htmlNode: node));
@@ -1971,15 +1971,15 @@ class _ZulipContentParser {
       }
       if (currentParagraph.isNotEmpty) consumeParagraph();
       final block = parseBlockContent(node);
-      if (block is ImagePreviewNode) {
-        imagePreviewNodes.add(block);
+      if (block is ImageNode) {
+        imageNodes.add(block);
         continue;
       }
-      if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+      if (imageNodes.isNotEmpty) consumeImageNodes();
       result.add(block);
     }
     if (currentParagraph.isNotEmpty) consumeParagraph();
-    if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+    if (imageNodes.isNotEmpty) consumeImageNodes();
     return result;
   }
 
@@ -1988,10 +1988,10 @@ class _ZulipContentParser {
   List<BlockContentNode> parseBlockContentList(dom.NodeList nodes) {
     final List<BlockContentNode> result = [];
 
-    List<ImagePreviewNode> imagePreviewNodes = [];
-    void consumeImagePreviewNodes() {
-      result.add(ImagePreviewNodeList(imagePreviewNodes));
-      imagePreviewNodes = [];
+    List<ImageNode> imageNodes = [];
+    void consumeImageNodes() {
+      result.add(ImageNodeList(imageNodes));
+      imageNodes = [];
     }
 
     for (final node in nodes) {
@@ -2006,20 +2006,20 @@ class _ZulipContentParser {
       // handle it explicitly here.
       if (node case dom.Element(localName: 'p', className: '', nodes: [
             dom.Element(localName: 'span', className: 'katex-display'), ...])) {
-        if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+        if (imageNodes.isNotEmpty) consumeImageNodes();
         parseMathBlocks(node.nodes, result);
         continue;
       }
 
       final block = parseBlockContent(node);
-      if (block is ImagePreviewNode) {
-        imagePreviewNodes.add(block);
+      if (block is ImageNode) {
+        imageNodes.add(block);
         continue;
       }
-      if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+      if (imageNodes.isNotEmpty) consumeImageNodes();
       result.add(block);
     }
-    if (imagePreviewNodes.isNotEmpty) consumeImagePreviewNodes();
+    if (imageNodes.isNotEmpty) consumeImageNodes();
     return result;
   }
 

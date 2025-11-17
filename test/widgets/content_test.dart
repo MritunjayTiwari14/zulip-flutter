@@ -313,7 +313,7 @@ void main() {
           ..status.equals(expected ? AnimationStatus.completed : AnimationStatus.dismissed);
       }
 
-      const example = ContentExample.spoilerHeaderHasImagePreview;
+      const example = ContentExample.spoilerHeaderHasImage;
 
       testWidgets('tap image', (tester) async {
         final pushedRoutes = await prepare(tester, example.html);
@@ -359,7 +359,7 @@ void main() {
 
   testContentSmoke(ContentExample.quotation);
 
-  group('MessageImagePreview, MessageImagePreviewList', () {
+  group('MessageImage, MessageImageList', () {
     Future<void> prepare(WidgetTester tester, String html) async {
       await prepareContent(tester,
         // Message is needed for an image's lightbox.
@@ -370,9 +370,9 @@ void main() {
     }
 
     testWidgets('single image', (tester) async {
-      const example = ContentExample.imagePreviewSingle;
+      const example = ContentExample.imageSingle;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[0] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[0] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -380,9 +380,9 @@ void main() {
     });
 
     testWidgets('single image no thumbnail', (tester) async {
-      const example = ContentExample.imagePreviewSingleNoThumbnail;
+      const example = ContentExample.imageSingleNoThumbnail;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[0] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[0] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -390,28 +390,27 @@ void main() {
     });
 
     testWidgets('single image loading placeholder', (tester) async {
-      const example = ContentExample.imagePreviewSingleLoadingPlaceholder;
+      const example = ContentExample.imageSingleLoadingPlaceholder;
       await prepare(tester, example.html);
       await tester.ensureVisible(find.byType(CupertinoActivityIndicator));
     });
 
     testWidgets('image with invalid src URL', (tester) async {
-      const example = ContentExample.imagePreviewInvalidUrl;
+      const example = ContentExample.imageInvalidUrl;
       await prepare(tester, example.html);
       // The image indeed has an invalid URL.
-      final expectedImages = (example.expectedNodes[0] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[0] as ImageNodeList).images;
       check(() => Uri.parse(expectedImages.single.srcUrl)).throws<void>();
       check(tryResolveUrl(eg.realmUrl, expectedImages.single.srcUrl)).isNull();
-      // The MessageImagePreview has shown up,
-      // but it doesn't attempt a RealmContentNetworkImage.
-      check(tester.widgetList(find.byType(MessageImagePreview))).isNotEmpty();
+      // The MessageImage has shown up, but it doesn't attempt a RealmContentNetworkImage.
+      check(tester.widgetList(find.byType(MessageImage))).isNotEmpty();
       check(tester.widgetList(find.byType(RealmContentNetworkImage))).isEmpty();
     });
 
     testWidgets('multiple images', (tester) async {
-      const example = ContentExample.imagePreviewCluster;
+      const example = ContentExample.imageCluster;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[1] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[1] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -419,9 +418,9 @@ void main() {
     });
 
     testWidgets('multiple images no thumbnails', (tester) async {
-      const example = ContentExample.imagePreviewClusterNoThumbnails;
+      const example = ContentExample.imageClusterNoThumbnails;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[1] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[1] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -429,9 +428,9 @@ void main() {
     });
 
     testWidgets('content after image cluster', (tester) async {
-      const example = ContentExample.imagePreviewClusterThenContent;
+      const example = ContentExample.imageClusterThenContent;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[1] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[1] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -439,10 +438,10 @@ void main() {
     });
 
     testWidgets('multiple clusters of images', (tester) async {
-      const example = ContentExample.imagePreviewMultipleClusters;
+      const example = ContentExample.imageMultipleClusters;
       await prepare(tester, example.html);
-      final expectedImages = (example.expectedNodes[1] as ImagePreviewNodeList).imagePreviews
-        + (example.expectedNodes[4] as ImagePreviewNodeList).imagePreviews;
+      final expectedImages = (example.expectedNodes[1] as ImageNodeList).images
+        + (example.expectedNodes[4] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -450,10 +449,10 @@ void main() {
     });
 
     testWidgets('image as immediate child in implicit paragraph', (tester) async {
-      const example = ContentExample.imagePreviewInImplicitParagraph;
+      const example = ContentExample.imageInImplicitParagraph;
       await prepare(tester, example.html);
       final expectedImages = ((example.expectedNodes[0] as ListNode)
-        .items[0][0] as ImagePreviewNodeList).imagePreviews;
+        .items[0][0] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
@@ -461,10 +460,10 @@ void main() {
     });
 
     testWidgets('image cluster in implicit paragraph', (tester) async {
-      const example = ContentExample.imagePreviewClusterInImplicitParagraph;
+      const example = ContentExample.imageClusterInImplicitParagraph;
       await prepare(tester, example.html);
       final expectedImages = ((example.expectedNodes[0] as ListNode)
-        .items[0][1] as ImagePreviewNodeList).imagePreviews;
+        .items[0][1] as ImageNodeList).images;
       final images = tester.widgetList<RealmContentNetworkImage>(
         find.byType(RealmContentNetworkImage));
       check(images.map((i) => i.src.toString()).toList())
