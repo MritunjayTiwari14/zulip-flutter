@@ -75,7 +75,7 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get allChannelsPageTitle => 'Titolo per la pagina \"Tutti i canali\".';
 
   @override
-  String get allChannelsEmptyPlaceholderHeader =>
+  String get allChannelsEmptyPlaceholder =>
       'There are no channels you can view in this organization.';
 
   @override
@@ -930,12 +930,8 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get inboxPageTitle => 'Inbox';
 
   @override
-  String get inboxEmptyPlaceholderHeader =>
-      'There are no unread messages in your inbox.';
-
-  @override
-  String get inboxEmptyPlaceholderMessage =>
-      'Use the buttons below to view the combined feed or list of channels.';
+  String get inboxEmptyPlaceholder =>
+      'Non ci sono messaggi non letti nella posta in arrivo. Usare i pulsanti sotto per visualizzare il feed combinato o l\'elenco dei canali.';
 
   @override
   String get recentDmConversationsPageTitle => 'Messaggi diretti';
@@ -944,12 +940,8 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Messaggi diretti';
 
   @override
-  String get recentDmConversationsEmptyPlaceholderHeader =>
-      'You have no direct messages yet!';
-
-  @override
-  String get recentDmConversationsEmptyPlaceholderMessage =>
-      'Why not start a conversation?';
+  String get recentDmConversationsEmptyPlaceholder =>
+      'Non ci sono ancora messaggi diretti! Perché non iniziare la conversazione?';
 
   @override
   String get combinedFeedPageTitle => 'Feed combinato';
@@ -964,12 +956,14 @@ class ZulipLocalizationsIt extends ZulipLocalizations {
   String get channelsPageTitle => 'Canali';
 
   @override
-  String get channelsEmptyPlaceholderHeader =>
-      'You’re not subscribed to any channels yet.';
+  String get channelsEmptyPlaceholder =>
+      'Non sei ancora iscritto ad alcun canale.';
 
   @override
-  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderWithAllChannelsLink(
+    String allChannelsPageTitle,
+  ) {
+    return 'You’re not subscribed to any channels yet. Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
   }
 
   @override

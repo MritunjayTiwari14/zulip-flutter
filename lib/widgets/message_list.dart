@@ -1032,14 +1032,14 @@ class _MessageListState extends State<MessageList> with PerAccountStoreAwareStat
     if (!model.fetched) return const Center(child: CircularProgressIndicator());
 
     if (model.items.isEmpty && model.haveNewest && model.haveOldest) {
-      final String header;
+      final String message;
       if (widget.narrow is KeywordSearchNarrow) {
-        header = zulipLocalizations.emptyMessageListSearch;
+        message = zulipLocalizations.emptyMessageListSearch;
       } else {
-        header = zulipLocalizations.emptyMessageList;
+        message = zulipLocalizations.emptyMessageList;
       }
 
-      return PageBodyEmptyContentPlaceholder(header: header);
+      return PageBodyEmptyContentPlaceholder(message: message);
     }
 
     // Pad the left and right insets, for small devices in landscape.

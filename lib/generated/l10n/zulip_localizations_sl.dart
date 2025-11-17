@@ -73,8 +73,8 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get allChannelsPageTitle => 'Vsi kanali';
 
   @override
-  String get allChannelsEmptyPlaceholderHeader =>
-      'There are no channels you can view in this organization.';
+  String get allChannelsEmptyPlaceholder =>
+      'V tej organizaciji ni kanalov, ki bi si jih lahko ogledali.';
 
   @override
   String get profileButtonSendDirectMessage => 'Pošlji neposredno sporočilo';
@@ -947,12 +947,8 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get inboxPageTitle => 'Nabiralnik';
 
   @override
-  String get inboxEmptyPlaceholderHeader =>
-      'There are no unread messages in your inbox.';
-
-  @override
-  String get inboxEmptyPlaceholderMessage =>
-      'Use the buttons below to view the combined feed or list of channels.';
+  String get inboxEmptyPlaceholder =>
+      'V vašem nabiralniku ni neprebranih sporočil. Uporabite spodnje gumbe za ogled združenega prikaza ali seznama kanalov.';
 
   @override
   String get recentDmConversationsPageTitle => 'Neposredna sporočila';
@@ -961,12 +957,8 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Neposredna sporočila';
 
   @override
-  String get recentDmConversationsEmptyPlaceholderHeader =>
-      'You have no direct messages yet!';
-
-  @override
-  String get recentDmConversationsEmptyPlaceholderMessage =>
-      'Why not start a conversation?';
+  String get recentDmConversationsEmptyPlaceholder =>
+      'Zaenkrat še nimate neposrednih sporočil! Zakaj ne bi začeli pogovora?';
 
   @override
   String get combinedFeedPageTitle => 'Združen prikaz';
@@ -981,12 +973,13 @@ class ZulipLocalizationsSl extends ZulipLocalizations {
   String get channelsPageTitle => 'Kanali';
 
   @override
-  String get channelsEmptyPlaceholderHeader =>
-      'You’re not subscribed to any channels yet.';
+  String get channelsEmptyPlaceholder => 'Niste še naročeni na noben kanal.';
 
   @override
-  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderWithAllChannelsLink(
+    String allChannelsPageTitle,
+  ) {
+    return 'Naročeni še niste na noben kanal. Poskusite odpreti <z-link>$allChannelsPageTitle</z-link> in se pridružiti kateremu od njih.';
   }
 
   @override

@@ -74,8 +74,8 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get allChannelsPageTitle => 'Wszystkie kanały';
 
   @override
-  String get allChannelsEmptyPlaceholderHeader =>
-      'There are no channels you can view in this organization.';
+  String get allChannelsEmptyPlaceholder =>
+      'Brak kanałów, które możesz przeglądać w tej organizacji.';
 
   @override
   String get profileButtonSendDirectMessage => 'Wyślij wiadomość bezpośrednią';
@@ -927,12 +927,8 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get inboxPageTitle => 'Odebrane';
 
   @override
-  String get inboxEmptyPlaceholderHeader =>
-      'There are no unread messages in your inbox.';
-
-  @override
-  String get inboxEmptyPlaceholderMessage =>
-      'Use the buttons below to view the combined feed or list of channels.';
+  String get inboxEmptyPlaceholder =>
+      'Obecnie brak nowych wiadomości. Skorzystaj z przycisków u dołu ekranu aby przejść do widoku mieszanego lub listy kanałów.';
 
   @override
   String get recentDmConversationsPageTitle => 'Wiadomości bezpośrednie';
@@ -941,12 +937,8 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get recentDmConversationsSectionHeader => 'Wiadomości bezpośrednie';
 
   @override
-  String get recentDmConversationsEmptyPlaceholderHeader =>
-      'You have no direct messages yet!';
-
-  @override
-  String get recentDmConversationsEmptyPlaceholderMessage =>
-      'Why not start a conversation?';
+  String get recentDmConversationsEmptyPlaceholder =>
+      'Brak wiadomości w archiwum! Może warto rozpocząć dyskusję?';
 
   @override
   String get combinedFeedPageTitle => 'Mieszany widok';
@@ -961,12 +953,13 @@ class ZulipLocalizationsPl extends ZulipLocalizations {
   String get channelsPageTitle => 'Kanały';
 
   @override
-  String get channelsEmptyPlaceholderHeader =>
-      'You’re not subscribed to any channels yet.';
+  String get channelsEmptyPlaceholder => 'Nie śledzisz żadnego z kanałów.';
 
   @override
-  String channelsEmptyPlaceholderMessage(String allChannelsPageTitle) {
-    return 'Try going to <z-link>$allChannelsPageTitle</z-link> and joining some of them.';
+  String channelsEmptyPlaceholderWithAllChannelsLink(
+    String allChannelsPageTitle,
+  ) {
+    return 'Nie śledzisz żadnego z kanałów. Sprawdź dostępne <z-link>$allChannelsPageTitle</z-link> i dołącz do części z nich.';
   }
 
   @override

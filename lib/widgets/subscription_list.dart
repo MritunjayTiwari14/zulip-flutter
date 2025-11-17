@@ -137,15 +137,14 @@ class _SubscriptionListPageBodyState extends State<SubscriptionListPageBody> wit
     if (pinned.isEmpty && unpinned.isEmpty) {
       if (includeAllChannelsButton) {
         return PageBodyEmptyContentPlaceholder(
-          header: zulipLocalizations.channelsEmptyPlaceholderHeader,
           messageWithLinkMarkup:
-            zulipLocalizations.channelsEmptyPlaceholderMessage(
+            zulipLocalizations.channelsEmptyPlaceholderWithAllChannelsLink(
               zulipLocalizations.allChannelsPageTitle),
-          onTapMessageLink: () => Navigator.push(context,
+          onTapLink: () => Navigator.push(context,
             AllChannelsPage.buildRoute(context: context)));
       } else {
         return PageBodyEmptyContentPlaceholder(
-          header: zulipLocalizations.channelsEmptyPlaceholderHeader);
+          message: zulipLocalizations.channelsEmptyPlaceholder);
       }
     }
 
